@@ -1,20 +1,23 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import { motion } from "framer-motion";
+import { memo, useMemo } from "react";
 
 const ConfidenceVennDiagram = ({ jobRecommendation }) => {
-  const totalConfidenceScore = jobRecommendation.reduce(
-    (sum, job) => sum + parseFloat(job.confidenceScore),
-    0
-  );
+  const confidenceData = useMemo(() => {
+    const totalConfidenceScore = jobRecommendation.reduce(
+      (sum, job) => sum + parseFloat(job.confidenceScore),
+      0
+    );
 
-  const confidenceData = jobRecommendation.map((job) => ({
-    name: job.jobTitle,
-    value: parseFloat(job.confidenceScore),
-    percentage: (
-      (parseFloat(job.confidenceScore) / totalConfidenceScore) *
-      100
-    ).toFixed(2),
-  }));
+    return jobRecommendation.map((job) => ({
+      name: job.jobTitle,
+      value: parseFloat(job.confidenceScore),
+      percentage: (
+        (parseFloat(job.confidenceScore) / totalConfidenceScore) *
+        100
+      ).toFixed(2),
+    }));
+  }, [jobRecommendation]);
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
@@ -72,4 +75,4 @@ const ConfidenceVennDiagram = ({ jobRecommendation }) => {
   );
 };
 
-export default ConfidenceVennDiagram;
+export default memo(ConfidenceVennDiagram);

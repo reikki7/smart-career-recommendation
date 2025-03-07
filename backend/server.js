@@ -5,6 +5,7 @@ const pdfParse = require("pdf-parse");
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
+const cheerio = require("cheerio");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -55,7 +56,7 @@ app.post("/api/parse-pdf", upload.single("pdfFile"), async (req, res) => {
         },
         {
           role: "user",
-          content: `Please summarize who the person, and list some job recommendations. The job recommendations should be based on the document content and follow a VERY specific format which will be used for further processing in the frontend. For Skills, it's the related skills to the job based on the document and the recommended job, so if you want to, for example, recommend Machine Learning Engineer, make sure I have the relevant experience from the document and also list only related skills in the JSON, like don't list PHP when the job recommendation is 3D Game Development, or Java for Machine Learning, like who uses Java for Machine Learning. And also in the JSON, for the skills, only list skillset and not the project, like if a job recommendation is Machine Learning, the skill would be like "Python" or "Tensorflow" and not "AI Chatbot", Relevant Projects/Experience will instead have its own array, it doesn't have to be more than 1 if the person only have 1 relevant project/experience, but make sure the ones listed are the exact same as the one in "Experience" array.\n\n
+          content: `Please summarize who the person, and list some career path recommendations. The career path recommendations should be based on the document content and follow a VERY specific format which will be used for further processing in the frontend. If you're suggesting a career path, each field MUST NOT BE EMPTY. For Skills, it's the related skills to the career path based on the document and the recommended career path, so if you want to, for example, recommend Machine Learning Engineer, make sure I have the relevant experience from the document and also list only related skills in the JSON, like don't list PHP when the job recommendation is 3D Game Development, or Java for Machine Learning, like who uses Java for Machine Learning. And also in the JSON, for the skills, only list skillset and not the project, like if a career path is about Machine Learning, the skill would be like "Python" or "Tensorflow" and not "AI Chatbot", Relevant Projects/Experience will instead have its own array, it doesn't have to be more than 1 if the person only have 1 relevant project/experience, but make sure the ones listed are the exact same as the one in "Experience" array.\n\n
           
           Btw, Experience Title is the project/experience name, like what project the person was working on, or what the person did, like say it "Designer Portfolio Website" and NOT "Full-Stack Development", it should be specific and not what the project/experience is categorized in, also not "Teaching Assistant: Taught structural analysis techniques relevant to geotech engineering.", "Teaching Assistant" is enough, make it short. Make sure "relevantExperience" in jobRecommendation only lists the available experience from "Experience".\n\n
           
@@ -144,6 +145,61 @@ ${cleanedContent}
   } catch (error) {
     console.error("Error processing PDF and LM Studio request:", error);
     res.status(500).send("Failed to process PDF or LM Studio request");
+  }
+});
+
+app.get("/api/linkedin-jobs", async (req, res) => {
+  try {
+    const { title = "" } = req.query;
+    const sanitizedTitle = title.replace(/[-:]/g, "");
+
+    const linkedInUrl = `https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=${encodeURIComponent(
+      sanitizedTitle
+    )}&location=Indonesia&start=0`;
+
+    // Fetch the HTML
+    const response = await axios.get(linkedInUrl);
+    const html = response.data;
+
+    // Load into Cheerio to parse
+    const $ = cheerio.load(html);
+    const jobListings = [];
+
+    $(".base-card").each((i, element) => {
+      const jobTitle = $(element)
+        .find(".base-search-card__title")
+        .text()
+        .trim();
+      const organization = $(element)
+        .find(".base-search-card__subtitle")
+        .text()
+        .trim();
+      const location = $(element)
+        .find(".job-search-card__location")
+        .text()
+        .trim();
+      const url = $(element).find(".base-card__full-link").attr("href");
+      const companyLogo = $(element)
+        .find("img.artdeco-entity-image")
+        .attr("data-delayed-url");
+      const postedDate = $(element)
+        .find("time.job-search-card__listdate")
+        .attr("datetime");
+
+      jobListings.push({
+        title: jobTitle,
+        organization,
+        locations_derived: [location],
+        url,
+        companyLogo,
+        date_posted: postedDate,
+      });
+    });
+
+    res.json(jobListings);
+  } catch (error) {
+    console.error("Error fetching from LinkedIn:", error);
+    res.status(500).json({ error: "Failed to fetch data from LinkedIn" });
   }
 });
 
