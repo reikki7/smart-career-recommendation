@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -20,6 +20,7 @@ function App() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isLoadingJobs, setIsLoadingJobs] = useState(false);
   const [vennDiagramRendered, setVennDiagramRendered] = useState(false);
+  const [selectedCareerPath, setSelectedCareerPath] = useState("");
 
   const pdfParseEndpoint = import.meta.env.VITE_PDF_PARSING_API_URL;
   const linkedinJobsEndpoint = import.meta.env.VITE_LINKEDIN_JOBS_API_URL;
@@ -42,11 +43,14 @@ function App() {
       setError("Please select a PDF file first");
       return;
     }
+
     localStorage.removeItem("jobListings");
     setJobListings([]);
+    setSelectedCareerPath("");
 
     setIsAnalyzing(true);
     setLoading(true);
+    setIsLoadingJobs(false);
     setPdfContent(null);
     setParsedContent(null);
 
@@ -58,43 +62,68 @@ function App() {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      const cleanedOutput = response.data.replace(/```/g, "");
-      console.log(cleanedOutput);
+      if (typeof response.data === "object") {
+        console.log("Received valid JSON response:", response.data);
+        setParsedContent(response.data);
+        setIsLoadingJobs(true);
+      } else {
+        try {
+          const jsonData = JSON.parse(response.data);
+          setParsedContent(jsonData);
+          setIsLoadingJobs(true);
+        } catch (jsonError) {
+          console.error("Error parsing response as JSON:", jsonError);
+          const cleanedOutput = response.data.replace(/```/g, "");
+          console.log("Cleaned non-JSON output:", cleanedOutput);
+          setPdfContent(cleanedOutput);
+        }
+      }
 
-      setPdfContent(cleanedOutput);
       setError("");
     } catch (err) {
-      setError("Error parsing PDF: " + err.message);
+      console.error("Error during PDF upload:", err);
+      const errorMessage = err.response?.data || err.message;
+      setError("Error parsing PDF: " + errorMessage);
       setPdfContent(null);
+      setParsedContent(null);
+      setIsLoadingJobs(false);
     } finally {
       setIsAnalyzing(false);
       setLoading(false);
-      setIsLoadingJobs(true);
     }
   };
 
-  // Parse the JSON output from PDF
   useEffect(() => {
-    if (pdfContent) {
+    if (parsedContent) {
+      setVennDiagramRendered(false);
+      setIsLoadingJobs(true);
+    } else if (pdfContent) {
       try {
         const cleanedJson = pdfContent
           .trim()
           .replace(/```/g, "")
           .replace(/^json\s*:?/i, "");
-        const jsonData = JSON.parse(cleanedJson);
-        setParsedContent(jsonData);
-        setVennDiagramRendered(false);
+        const jsonEndIndex = cleanedJson.lastIndexOf("}");
+        if (jsonEndIndex !== -1) {
+          const jsonPart = cleanedJson.substring(0, jsonEndIndex + 1);
+          const jsonData = JSON.parse(jsonPart);
+          setParsedContent(jsonData);
+          setVennDiagramRendered(false);
+          setIsLoadingJobs(true);
+        } else {
+          throw new Error("Could not find valid JSON structure");
+        }
       } catch (err) {
         console.error("Error parsing JSON:", err);
         setError(
-          "We couldn’t parse the data from your PDF. Please try again or upload a different PDF."
+          "We couldn't parse the data from your PDF. Please try again or upload a different PDF."
         );
         setParsedContent(null);
+        setIsLoadingJobs(false);
       }
     }
-  }, [pdfContent]);
+  }, [pdfContent, parsedContent]);
 
-  // Fetch job listings
   useEffect(() => {
     async function fetchJobListings(title) {
       const sanitizedTitle = title.replace(/[-:]/g, "");
@@ -103,20 +132,26 @@ function App() {
           params: { title: sanitizedTitle },
         });
         console.log("Fetched job listings for", title, response.data);
-        return response.data;
+
+        const jobsWithCareerPath = response.data.map((job) => ({
+          ...job,
+          careerPath: title,
+        }));
+
+        return jobsWithCareerPath;
       } catch (error) {
         console.error("Error fetching job listings for", title, error);
         return [];
       }
     }
 
-    if (parsedContent?.jobRecommendation?.length) {
+    if (parsedContent?.jobRecommendation?.length && isLoadingJobs) {
       const cachedListings = localStorage.getItem("jobListings");
       if (cachedListings) {
         setJobListings(JSON.parse(cachedListings));
         setIsLoadingJobs(false);
+        setVennDiagramRendered(true);
       } else {
-        setIsLoadingJobs(true);
         const uniqueTitles = [
           ...new Set(
             parsedContent.jobRecommendation.map((job) => job.jobTitle)
@@ -128,15 +163,28 @@ function App() {
           setJobListings(flattened);
           localStorage.setItem("jobListings", JSON.stringify(flattened));
           setIsLoadingJobs(false);
+          setVennDiagramRendered(true);
         });
       }
     }
-  }, [parsedContent, linkedinJobsEndpoint]);
+  }, [parsedContent, linkedinJobsEndpoint, isLoadingJobs]);
+
+  const handleCareerPathClick = (careerPath) => {
+    if (selectedCareerPath === careerPath) {
+      setSelectedCareerPath("");
+    } else {
+      setSelectedCareerPath(careerPath);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* Left Sidebar */}
-      <AnalysisResult parsedContent={parsedContent} />
+      {/* Left Sidebar with the analysis results */}
+      <AnalysisResult
+        parsedContent={parsedContent}
+        onCareerPathClick={handleCareerPathClick}
+        selectedCareerPath={selectedCareerPath}
+      />
 
       {/* Main Content */}
       <MainContent
@@ -152,8 +200,11 @@ function App() {
         handleUpload={handleUpload}
       />
 
-      {/* Right Sidebar */}
-      <JobListings jobListings={jobListings} />
+      {/* Right Sidebar with job listings */}
+      <JobListings
+        jobListings={jobListings}
+        selectedCareerPath={selectedCareerPath}
+      />
     </div>
   );
 }

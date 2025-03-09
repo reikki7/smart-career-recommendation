@@ -1,7 +1,8 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, ArrowRight, Briefcase } from "lucide-react";
-import ConfidenceVennDiagram from "./ConfidenceVennDiagram";
+import Chatbox from "./Chatbox";
+import webIcon from "/webIcon.png";
 
 function MainContent({
   fileName,
@@ -10,15 +11,13 @@ function MainContent({
   isAnalyzing,
   isLoadingJobs,
   parsedContent,
-  vennDiagramRendered,
-  setVennDiagramRendered,
   handleFileChange,
   handleUpload,
 }) {
   return (
     <div
       className={`flex-1 flex flex-col duration-150 ${
-        !parsedContent ? "justify-center items-center" : ""
+        !parsedContent && "justify-center items-center"
       }`}
     >
       <div className="max-w-2xl mx-auto w-full px-4 py-12 space-y-6">
@@ -29,45 +28,55 @@ function MainContent({
           className="text-center"
         >
           <h1 className="text-4xl font-bold text-blue-600 mb-4 flex justify-center items-center">
-            <Briefcase className="mr-3" size={36} />
-            Job Recommendation
+            <img src={webIcon} className="mr-3 w-10 h-10" alt="Jobify" />
+            Jobify
           </h1>
           <p className="text-gray-600 max-w-md mx-auto">
-            Upload your resume to discover personalized job recommendations
-            tailored to your skills and experience.
+            Upload your resume and get personalized career matches and
+            professional insights
           </p>
         </motion.div>
 
-        {/* File Upload */}
+        {/* File Upload Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white shadow-lg rounded-lg p-6 border border-gray-200"
+          transition={{ delay: 0.2 }}
         >
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Upload your CV
-            </label>
-            <div className="flex items-center">
-              <input
-                type="file"
-                onChange={handleFileChange}
-                disabled={loading || isAnalyzing}
-                className="hidden"
-                id="pdf-upload"
-                accept="application/pdf"
-              />
-              <label
-                htmlFor="pdf-upload"
-                className="flex-1 cursor-pointer flex items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white duration-150 hover:bg-gray-50 focus:outline-none"
-              >
-                <Upload className="mr-2" size={20} />
-                {fileName || "Choose PDF file..."}
-              </label>
+          <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
+            <div className="space-y-4">
+              <div className="flex items-center justify-center w-full">
+                <label
+                  htmlFor="dropzone-file"
+                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                >
+                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    <Upload className="w-8 h-8 mb-3 text-gray-500" />
+                    <p className="mb-2 text-sm text-gray-500">
+                      <span className="font-semibold">Click to upload</span> or
+                      drag and drop
+                    </p>
+                    <p className="text-xs text-gray-500">PDF Document</p>
+                    {fileName && (
+                      <p className="mt-2 text-xs text-blue-600 font-semibold">
+                        {fileName}
+                      </p>
+                    )}
+                  </div>
+                  <input
+                    id="dropzone-file"
+                    type="file"
+                    className="hidden"
+                    accept=".pdf"
+                    onChange={handleFileChange}
+                    disabled={loading || isAnalyzing}
+                  />
+                </label>
+              </div>
               <button
                 onClick={handleUpload}
-                disabled={(!fileName && !isAnalyzing) || loading || isAnalyzing}
-                className="ml-3 inline-flex items-center duration-150 justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none disabled:bg-blue-300 disabled:cursor-not-allowed"
+                disabled={!fileName || loading || isAnalyzing}
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-400 flex items-center justify-center"
               >
                 {loading || isAnalyzing ? "Processing..." : "Analyze"}
                 <ArrowRight className="ml-2" size={16} />
@@ -77,32 +86,9 @@ function MainContent({
           </div>
         </motion.div>
 
-        {/* Venn Diagram */}
-        {parsedContent && !vennDiagramRendered && (
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            onAnimationComplete={() => setVennDiagramRendered(true)}
-            className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4"
-          >
-            <h2 className="text-xl font-bold text-blue-600 mb-4 text-center">
-              Job Match Distribution
-            </h2>
-            <ConfidenceVennDiagram
-              jobRecommendation={parsedContent.jobRecommendation}
-            />
-          </motion.div>
-        )}
-
-        {parsedContent && vennDiagramRendered && (
+        {parsedContent && !loading && (
           <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
-            <h2 className="text-xl font-bold text-blue-600 mb-4 text-center">
-              Job Match Distribution
-            </h2>
-            <ConfidenceVennDiagram
-              jobRecommendation={parsedContent.jobRecommendation}
-            />
+            <Chatbox parsedContent={parsedContent} />
           </div>
         )}
 

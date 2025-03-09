@@ -6,9 +6,11 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 const cheerio = require("cheerio");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
 const port = process.env.PORT || 5000;
+const lmStudioUrl = process.env.LM_STUDIO_URL;
 
 app.use(cors());
 app.use(express.json());
@@ -58,9 +60,7 @@ app.post("/api/parse-pdf", upload.single("pdfFile"), async (req, res) => {
           role: "user",
           content: `Please summarize who the person, and list some career path recommendations. The career path recommendations should be based on the document content and follow a VERY specific format which will be used for further processing in the frontend. If you're suggesting a career path, each field MUST NOT BE EMPTY. For Skills, it's the related skills to the career path based on the document and the recommended career path, so if you want to, for example, recommend Machine Learning Engineer, make sure I have the relevant experience from the document and also list only related skills in the JSON, like don't list PHP when the job recommendation is 3D Game Development, or Java for Machine Learning, like who uses Java for Machine Learning. And also in the JSON, for the skills, only list skillset and not the project, like if a career path is about Machine Learning, the skill would be like "Python" or "Tensorflow" and not "AI Chatbot", Relevant Projects/Experience will instead have its own array, it doesn't have to be more than 1 if the person only have 1 relevant project/experience, but make sure the ones listed are the exact same as the one in "Experience" array.\n\n
           
-          Btw, Experience Title is the project/experience name, like what project the person was working on, or what the person did, like say it "Designer Portfolio Website" and NOT "Full-Stack Development", it should be specific and not what the project/experience is categorized in, also not "Teaching Assistant: Taught structural analysis techniques relevant to geotech engineering.", "Teaching Assistant" is enough, make it short. Make sure "relevantExperience" in jobRecommendation only lists the available experience from "Experience".\n\n
-          
-          For confidenceScore, it's like the points it is compared to the other job recommendations. Like for example, let's say my resume is mostly about Full Stack Development, then the confidence score for a Full Stack Developer job recommendation would be like 90, but for example, if there's a bit about Data Science, then the score would be like 30. The confidence score is between 0-100. The job recommendations should be in order of relevance.\n\n       
+          Btw, Experience Title is the project/experience name, like what project the person was working on, or what the person did, like say it "Designer Portfolio Website" and NOT "Full-Stack Development", it should be specific and not what the project/experience is categorized in, also not "Teaching Assistant: Taught structural analysis techniques relevant to geotech engineering.", "Teaching Assistant" is enough, make it short. Make sure "relevantExperience" in jobRecommendation only lists the available experience from "Experience".\n\n       
 IMPORTANT: Return only valid JSON without any additional text or commentary.
         
 JSON Format:
@@ -80,7 +80,11 @@ JSON Format:
       "description": "[description of the experience3]"
     },
     {
-    (and so on... if there are more, show more, if there are less, show less)
+      "title": "[title of the experience4]",
+      "description": "[description of the experience4]"
+    },
+    {
+    (and so on... 4 is not the fixed number, just an example of formatting, if there are more, show more, if there are less, show less)
     }
   ],
   "jobRecommendation": [
@@ -88,25 +92,28 @@ JSON Format:
       "jobTitle": "[jobTitle1]" (String),
       "jobDescription": "[jobDescription1] (String)",
       "skills": "[skills1, skills1, skills1, ...] (Array of Strings)",
-      "relevantExperience": "[relevantExperience1, relevantExperience1, relevantExperience1, ...] (Array of Strings)",
-      "confidenceScore": "[confidenceScore1 (from 0-100)] (Number)"
+      "relevantExperience": "[relevantExperience1, relevantExperience1, relevantExperience1, ...] (Array of Strings)"
     },
     {
       "jobTitle": "[jobTitle2]" (String),
       "jobDescription": "[jobDescription2] (String)",
       "skills": "[skills2, skills2, skills2, ...] (Array of Strings)",
-      "relevantExperience": "[relevantExperience2, relevantExperience2, relevantExperience2, ...] (Array of Strings)",
-      "confidenceScore": "[confidenceScore2 (from 0-100)] (Number)"
+      "relevantExperience": "[relevantExperience2, relevantExperience2, relevantExperience2, ...] (Array of Strings)"
     },
     {
       "jobTitle": "[jobTitle3]" (String),
       "jobDescription": "[jobDescription3] (String)",
       "skills": "[skills3, skills3, skills3, ...] (Array of Strings)",
-      "relevantExperience": "[relevantExperience3, relevantExperience3, relevantExperience3, ...] (Array of Strings)",
-      "confidenceScore": "[confidenceScore3 (from 0-100)] (Number)"
-    }
+      "relevantExperience": "[relevantExperience3, relevantExperience3, relevantExperience3, ...] (Array of Strings)"
+    },
+    {
+      "jobTitle": "[jobTitle4]" (String),
+      "jobDescription": "[jobDescription4] (String)",
+      "skills": "[skills4, skills4, skills4, ...] (Array of Strings)",
+      "relevantExperience": "[relevantExperience4, relevantExperience4, relevantExperience4, ...] (Array of Strings)"
+    },
       {
-  (and so on... if there are more, show more, if there are less, show less)
+    (and so on... 4 is not the fixed number, just an example of formatting, if there are more, show more, if there are less, show less)
       }
   ]
 }`,
@@ -116,32 +123,32 @@ JSON Format:
     };
 
     const lmResponse = await axios.post(
-      "http://localhost:1234/v1/chat/completions",
+      `${lmStudioUrl}/v1/chat/completions`,
       lmPayload
     );
 
-    const lmFormatted = lmResponse.data.choices[0].message.content;
-    const cleanedContent = lmFormatted
-      .replace(/<think>[\s\S]*?<\/think>/gi, "")
-      .trim();
+    let lmFormatted = lmResponse.data.choices[0].message.content;
+    lmFormatted = lmFormatted.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
 
-    // Build a markdown formatted output
-    const formattedOutput = `
-### Document Analysis
+    try {
+      const startIndex = lmFormatted.indexOf("{");
+      const endIndex = lmFormatted.lastIndexOf("}");
 
-**Title:** ${data.info?.Title || "Untitled"}  
-**Author:** ${data.info?.Author || "Unknown"}  
-**Total Pages:** ${data.numpages}  
-**Creation Date:** ${data.info?.CreationDate || "N/A"}  
-**Producer:** ${data.info?.Producer || "N/A"}
+      if (startIndex !== -1 && endIndex !== -1 && endIndex > startIndex) {
+        const jsonPart = lmFormatted.substring(startIndex, endIndex + 1);
+        const parsedJson = JSON.parse(jsonPart);
 
-### Document Summary
-
-${cleanedContent}
-`;
-
-    res.setHeader("Content-Type", "text/html");
-    res.send(cleanedContent);
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify(parsedJson));
+      } else {
+        throw new Error("Could not extract valid JSON");
+      }
+    } catch (jsonError) {
+      console.error("JSON extraction failed:", jsonError);
+      res
+        .status(500)
+        .send("Failed to extract valid JSON from LM Studio response");
+    }
   } catch (error) {
     console.error("Error processing PDF and LM Studio request:", error);
     res.status(500).send("Failed to process PDF or LM Studio request");
@@ -200,6 +207,44 @@ app.get("/api/linkedin-jobs", async (req, res) => {
   } catch (error) {
     console.error("Error fetching from LinkedIn:", error);
     res.status(500).json({ error: "Failed to fetch data from LinkedIn" });
+  }
+});
+
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { messages, parsedContent } = req.body;
+
+    const systemMessage = {
+      role: "system",
+      content: `You have the following analysis results from the user's PDF:
+
+${JSON.stringify(parsedContent, null, 2)}
+
+Use these results to answer the user's queries in a concise way. Always refer back to the analysis context.`,
+    };
+
+    const conversation = [systemMessage, ...messages];
+
+    const lmPayload = {
+      model: "local-model",
+      messages: conversation,
+      temperature: 0.7,
+    };
+
+    const lmResponse = await axios.post(
+      `${lmStudioUrl}/v1/chat/completions`,
+      lmPayload
+    );
+
+    const assistantMessage = lmResponse.data.choices[0].message;
+    assistantMessage.content = assistantMessage.content
+      .replace(/<think>[\s\S]*?<\/think>/gi, "")
+      .trim();
+
+    res.send(assistantMessage);
+  } catch (error) {
+    console.error("Error in /api/chat:", error);
+    res.status(500).json({ error: "Failed to process chat request" });
   }
 });
 
