@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import { SendHorizonal } from "lucide-react";
 import "ldrs/leapfrog";
 import { motion, AnimatePresence } from "framer-motion";
 
-function Chatbox({ parsedContent }) {
+const Chatbox = ({ parsedContent }) => {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -17,6 +17,8 @@ function Chatbox({ parsedContent }) {
   const [error, setError] = useState("");
   const messagesContainerRef = useRef(null);
   const latestUserMessageRef = useRef(null);
+
+  const backendEndpoint = import.meta.env.VITE_BACKEND_API_URL;
 
   useEffect(() => {
     if (latestUserMessageRef.current && messagesContainerRef.current) {
@@ -44,7 +46,7 @@ function Chatbox({ parsedContent }) {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/api/chat", {
+      const response = await axios.post(`${backendEndpoint}/api/chat`, {
         messages: updatedMessages,
         parsedContent: parsedContent,
       });
@@ -288,6 +290,6 @@ function Chatbox({ parsedContent }) {
       </motion.div>
     </motion.div>
   );
-}
+};
 
 export default Chatbox;

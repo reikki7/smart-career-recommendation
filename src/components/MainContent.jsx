@@ -1,4 +1,3 @@
-import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, ArrowRight, Briefcase } from "lucide-react";
 import Chatbox from "./Chatbox";

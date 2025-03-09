@@ -22,8 +22,7 @@ function App() {
   const [vennDiagramRendered, setVennDiagramRendered] = useState(false);
   const [selectedCareerPath, setSelectedCareerPath] = useState("");
 
-  const pdfParseEndpoint = import.meta.env.VITE_PDF_PARSING_API_URL;
-  const linkedinJobsEndpoint = import.meta.env.VITE_LINKEDIN_JOBS_API_URL;
+  const backendEndpoint = import.meta.env.VITE_BACKEND_API_URL;
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -58,9 +57,13 @@ function App() {
     formData.append("pdfFile", file);
 
     try {
-      const response = await axios.post(pdfParseEndpoint, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const response = await axios.post(
+        `${backendEndpoint}/api/parse-pdf`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
       if (typeof response.data === "object") {
         console.log("Received valid JSON response:", response.data);
@@ -128,9 +131,12 @@ function App() {
     async function fetchJobListings(title) {
       const sanitizedTitle = title.replace(/[-:]/g, "");
       try {
-        const response = await axios.get(linkedinJobsEndpoint, {
-          params: { title: sanitizedTitle },
-        });
+        const response = await axios.get(
+          `${backendEndpoint}/api/linkedin-jobs`,
+          {
+            params: { title: sanitizedTitle },
+          }
+        );
         console.log("Fetched job listings for", title, response.data);
 
         const jobsWithCareerPath = response.data.map((job) => ({
@@ -167,7 +173,7 @@ function App() {
         });
       }
     }
-  }, [parsedContent, linkedinJobsEndpoint, isLoadingJobs]);
+  }, [parsedContent, backendEndpoint, isLoadingJobs]);
 
   const handleCareerPathClick = (careerPath) => {
     if (selectedCareerPath === careerPath) {
