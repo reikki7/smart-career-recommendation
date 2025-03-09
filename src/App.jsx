@@ -61,7 +61,10 @@ function App() {
         `${backendEndpoint}/api/parse-pdf`,
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            skip_zrok_interstitial: true,
+          },
         }
       );
 
@@ -134,6 +137,11 @@ function App() {
         const response = await axios.get(
           `${backendEndpoint}/api/linkedin-jobs`,
           {
+            headers: {
+              "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": true,
+              skip_zrok_interstitial: true,
+            },
             params: { title: sanitizedTitle },
           }
         );
