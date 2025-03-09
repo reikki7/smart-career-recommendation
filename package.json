@@ -2,7 +2,7 @@
   "name": "test",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://reiki7.github.io/jobify-web",
+  "homepage": "https://reikki7.github.io/ai-job-recommendation",
   "type": "module",
   "scripts": {
     "dev": "vite",
