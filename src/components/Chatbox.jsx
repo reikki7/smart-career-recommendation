@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import { SendHorizonal } from "lucide-react";
-import "ldrs/leapfrog";
+import { Leapfrog } from "ldrs/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Chatbox = ({ parsedContent }) => {
@@ -243,7 +243,7 @@ const Chatbox = ({ parsedContent }) => {
                 className="bg-gray-200 px-3 pb-1 pt-3 rounded-r-xl rounded-tl-xl"
               >
                 <div>
-                  <l-leapfrog size="30" color="gray"></l-leapfrog>
+                  <Leapfrog size="30" color="gray"></Leapfrog>
                 </div>
               </motion.div>
             </motion.div>
