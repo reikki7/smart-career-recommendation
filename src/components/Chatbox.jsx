@@ -46,10 +46,19 @@ const Chatbox = ({ parsedContent }) => {
     setError("");
 
     try {
-      const response = await axios.post(`${backendEndpoint}/api/chat`, {
-        messages: updatedMessages,
-        parsedContent: parsedContent,
-      });
+      const response = await axios.post(
+        `${backendEndpoint}/api/chat`,
+        {
+          messages: updatedMessages,
+          parsedContent: parsedContent,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            skip_zrok_interstitial: true,
+          },
+        }
+      );
 
       const assistantMessage = response.data;
       setMessages((prev) => [...prev, assistantMessage]);
