@@ -129,7 +129,12 @@ function ManualInput({
       const response = await axios.post(
         `${backendEndpoint}/api/parse-manual`,
         payload,
-        { headers: { "Content-Type": "application/json" } }
+        {
+          headers: {
+            "Content-Type": "application/json",
+            skip_zrok_interstitial: true,
+          },
+        }
       );
       setParsedContent(response.data);
 
