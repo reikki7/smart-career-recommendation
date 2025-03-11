@@ -10,7 +10,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
 const port = process.env.PORT || 5000;
-const lmStudioUrl = process.env.LM_STUDIO_URL;
+const lmStudioUrl = process.env.LM_STUDIO_URL || "http://localhost:1234";
 
 app.use(cors());
 app.use(express.json());
@@ -145,13 +145,11 @@ JSON Format:
       }
     } catch (jsonError) {
       console.error("JSON extraction failed:", jsonError);
-      res
-        .status(500)
-        .send("Failed to extract valid JSON from LM Studio response");
+      res.status(500).send("Please try again, or upload a different document");
     }
   } catch (error) {
-    console.error("Error processing PDF and LM Studio request:", error);
-    res.status(500).send("Failed to process PDF or LM Studio request");
+    console.error("Error processing document", error);
+    res.status(500).send("Failed to process document");
   }
 });
 

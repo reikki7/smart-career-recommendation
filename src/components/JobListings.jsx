@@ -6,14 +6,20 @@ import linkedinIcon from "../assets/Linkedin_icon.svg";
 
 dayjs.extend(relativeTime);
 
-function JobListings({ jobListings, selectedCareerPath }) {
+function JobListings({
+  jobListings,
+  selectedCareerPath,
+  setSelectedCareerPath,
+}) {
   const filteredJobs = selectedCareerPath
     ? jobListings.filter((job) => job.careerPath === selectedCareerPath)
     : jobListings;
 
+  const showEmptyState = selectedCareerPath || jobListings.length > 0;
+
   return (
     <AnimatePresence>
-      {jobListings.length > 0 && (
+      {showEmptyState && (
         <motion.div
           initial={{ width: 0, opacity: 0 }}
           animate={{ width: "25%", opacity: 1 }}
@@ -152,9 +158,44 @@ function JobListings({ jobListings, selectedCareerPath }) {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500">
-                    No jobs found for that career path.
-                  </p>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="flex flex-col items-center justify-center py-8 px-4 text-center"
+                  >
+                    <div className="bg-gray-50 rounded-full p-4 mb-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-10 w-10 text-gray-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-gray-700 font-medium mb-2">
+                      No relevant jobs found
+                    </h3>
+                    <p className="text-gray-500 text-sm">
+                      {selectedCareerPath
+                        ? `We couldn't find any jobs matching "${selectedCareerPath}" at this time.`
+                        : "We couldn't find any jobs matching your profile at this time."}
+                    </p>
+                    {selectedCareerPath && (
+                      <button
+                        onClick={() => setSelectedCareerPath("")}
+                        className="mt-4 text-blue-600 text-sm font-medium"
+                      >
+                        View all available positions
+                      </button>
+                    )}
+                  </motion.div>
                 )}
               </motion.div>
             </AnimatePresence>

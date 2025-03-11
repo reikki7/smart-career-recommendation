@@ -22,7 +22,8 @@ function App() {
   const [vennDiagramRendered, setVennDiagramRendered] = useState(false);
   const [selectedCareerPath, setSelectedCareerPath] = useState("");
 
-  const backendEndpoint = import.meta.env.VITE_BACKEND_API_URL;
+  const backendEndpoint =
+    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -218,6 +219,7 @@ function App() {
       <JobListings
         jobListings={jobListings}
         selectedCareerPath={selectedCareerPath}
+        setSelectedCareerPath={setSelectedCareerPath}
       />
     </div>
   );
