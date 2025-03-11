@@ -3,7 +3,7 @@ import { Upload, ArrowRight, Briefcase } from "lucide-react";
 import Chatbox from "./Chatbox";
 import webIcon from "/webIcon.png";
 
-function MainContent({
+const ResumeUpload = ({
   fileName,
   error,
   loading,
@@ -12,7 +12,9 @@ function MainContent({
   parsedContent,
   handleFileChange,
   handleUpload,
-}) {
+  chatMessages,
+  setChatMessages,
+}) => {
   return (
     <div
       className={`flex-1 flex flex-col duration-150 ${
@@ -36,6 +38,16 @@ function MainContent({
           </p>
         </motion.div>
 
+        {parsedContent && !loading && (
+          <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
+            <Chatbox
+              parsedContent={parsedContent}
+              messages={chatMessages}
+              setMessages={setChatMessages}
+            />
+          </div>
+        )}
+
         {/* File Upload Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -47,10 +59,10 @@ function MainContent({
               <div className="flex items-center justify-center w-full">
                 <label
                   htmlFor="dropzone-file"
-                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer duration-150 bg-gray-50 hover:bg-gray-100"
                 >
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Upload className="w-8 h-8 mb-3 text-gray-500" />
+                    <Upload className="w-8 h-8 pt-2 mb-3 text-gray-500" />
                     <p className="mb-2 text-sm text-gray-500">
                       <span className="font-semibold">Click to upload</span> or
                       drag and drop
@@ -75,7 +87,7 @@ function MainContent({
               <button
                 onClick={handleUpload}
                 disabled={!fileName || loading || isAnalyzing}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-400 flex items-center justify-center"
+                className="w-full bg-blue-600 duration-150 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-blue-400 flex items-center justify-center"
               >
                 {loading || isAnalyzing ? "Processing..." : "Analyze"}
                 <ArrowRight className="ml-2" size={16} />
@@ -84,12 +96,6 @@ function MainContent({
             {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
           </div>
         </motion.div>
-
-        {parsedContent && !loading && (
-          <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
-            <Chatbox parsedContent={parsedContent} />
-          </div>
-        )}
 
         {/* Loading Animation */}
         <AnimatePresence mode="wait">
@@ -115,6 +121,6 @@ function MainContent({
       </div>
     </div>
   );
-}
+};
 
-export default MainContent;
+export default ResumeUpload;

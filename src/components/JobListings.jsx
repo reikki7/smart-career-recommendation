@@ -25,7 +25,7 @@ function JobListings({
           animate={{ width: "25%", opacity: 1 }}
           exit={{ width: 0, opacity: 0 }}
           transition={{ duration: 0.15 }}
-          className="bg-white shadow-xl border-l border-gray-200 flex flex-col h-screen sticky top-0"
+          className="bg-white shadow-xl border-l z-20 border-gray-200 flex flex-col h-screen sticky top-0"
         >
           {/* Header */}
           <div className="p-6 pb-4">

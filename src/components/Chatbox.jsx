@@ -5,13 +5,7 @@ import { SendHorizonal } from "lucide-react";
 import { Leapfrog } from "ldrs/react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Chatbox = ({ parsedContent }) => {
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content: "I can answer questions about your results. How can I help you?",
-    },
-  ]);
+const Chatbox = ({ parsedContent, messages, setMessages }) => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -226,7 +220,7 @@ const Chatbox = ({ parsedContent }) => {
           })}
         </AnimatePresence>
 
-        {/* Loading indicator with animation */}
+        {/* AI Loading indicator */}
         <AnimatePresence>
           {loading && (
             <motion.div
@@ -251,7 +245,7 @@ const Chatbox = ({ parsedContent }) => {
           )}
         </AnimatePresence>
 
-        {/* Error message with animation */}
+        {/* Error message */}
         <AnimatePresence>
           {error && (
             <motion.div
@@ -267,7 +261,7 @@ const Chatbox = ({ parsedContent }) => {
         </AnimatePresence>
       </motion.div>
 
-      {/* Input area with animation */}
+      {/* Input area */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

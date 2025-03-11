@@ -15,7 +15,7 @@ function AnalysisResult({
           animate={{ width: "25%", opacity: 1 }}
           exit={{ width: 0, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="bg-white shadow-xl border-r border-gray-200 p-6 overflow-y-auto h-screen sticky top-0"
+          className="bg-white shadow-xl border-r z-20 border-gray-200 p-6 overflow-y-auto h-screen sticky top-0"
         >
           <div className="space-y-6">
             {/* Summary */}

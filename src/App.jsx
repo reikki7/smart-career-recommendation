@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import MainContent from "./components/MainContent";
+import ManualInput from "./components/ManualInput";
+import ResumeUpload from "./components/ResumeUpload";
 import JobListings from "./components/JobListings";
 import AnalysisResult from "./components/AnalysisResult";
 
@@ -21,6 +22,25 @@ function App() {
   const [isLoadingJobs, setIsLoadingJobs] = useState(false);
   const [vennDiagramRendered, setVennDiagramRendered] = useState(false);
   const [selectedCareerPath, setSelectedCareerPath] = useState("");
+  const [inputMode, setInputMode] = useState("upload");
+  const [isSticky, setIsSticky] = useState(false);
+  const [chatMessages, setChatMessages] = useState([
+    {
+      role: "assistant",
+      content: "I can answer questions about your results. How can I help you?",
+    },
+  ]);
+  const [manualFormData, setManualFormData] = useState({
+    name: "",
+    education: [{ school: "", degree: "", major: "", gpa: "" }],
+    thesisAbstract: "",
+    experience: [{ title: "", description: "" }],
+    projects: [{ title: "", description: "" }],
+    languages: [""],
+    softSkills: [""],
+  });
+
+  const tabHeaderRef = useRef(null);
 
   const backendEndpoint =
     import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
@@ -79,7 +99,7 @@ function App() {
           setParsedContent(jsonData);
           setIsLoadingJobs(true);
         } catch (jsonError) {
-          console.error("Error parsing response as JSON:", jsonError);
+          console.error("Error parsing response:", jsonError);
           const cleanedOutput = response.data.replace(/```/g, "");
           console.log("Cleaned non-JSON output:", cleanedOutput);
           setPdfContent(cleanedOutput);
@@ -90,7 +110,7 @@ function App() {
     } catch (err) {
       console.error("Error during PDF upload:", err);
       const errorMessage = err.response?.data || err.message;
-      setError("Error parsing PDF: " + errorMessage);
+      setError("Error parsing document: " + errorMessage);
       setPdfContent(null);
       setParsedContent(null);
       setIsLoadingJobs(false);
@@ -130,6 +150,20 @@ function App() {
       }
     }
   }, [pdfContent, parsedContent]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (tabHeaderRef.current) {
+        const headerPos = tabHeaderRef.current.getBoundingClientRect().top;
+        setIsSticky(headerPos <= 0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     async function fetchJobListings(title) {
@@ -201,19 +235,74 @@ function App() {
         selectedCareerPath={selectedCareerPath}
       />
 
-      {/* Main Content */}
-      <MainContent
-        fileName={fileName}
-        error={error}
-        loading={loading}
-        isAnalyzing={isAnalyzing}
-        isLoadingJobs={isLoadingJobs}
-        parsedContent={parsedContent}
-        vennDiagramRendered={vennDiagramRendered}
-        setVennDiagramRendered={setVennDiagramRendered}
-        handleFileChange={handleFileChange}
-        handleUpload={handleUpload}
-      />
+      {/* Main Content Section */}
+      <div className="flex-1 flex flex-col">
+        {isSticky && <div className="h-12"></div>}
+        {/* Tab Header */}
+        <div
+          ref={tabHeaderRef}
+          className={`flex justify-center space-x-4 border-b border-gray-200 bg-gray-50 z-0 w-full ${
+            isSticky ? "fixed top-0 left-0 right-0" : ""
+          }`}
+        >
+          <button
+            onClick={() => {
+              setInputMode("upload");
+            }}
+            className={`py-2 px-4 font-semibold ${
+              inputMode === "upload"
+                ? "border-b-2 border-blue-600 text-blue-600"
+                : "text-gray-600"
+            }`}
+          >
+            Resume Upload
+          </button>
+          <button
+            onClick={() => {
+              setInputMode("manual");
+            }}
+            className={`py-2 px-4 font-semibold ${
+              inputMode === "manual"
+                ? "border-b-2 border-blue-600 text-blue-600"
+                : "text-gray-600"
+            }`}
+          >
+            Manual Input
+          </button>
+        </div>
+
+        {/* Render the appropriate input form */}
+        {inputMode === "upload" ? (
+          <ResumeUpload
+            fileName={fileName}
+            error={error}
+            loading={loading}
+            isAnalyzing={isAnalyzing}
+            isLoadingJobs={isLoadingJobs}
+            parsedContent={parsedContent}
+            vennDiagramRendered={vennDiagramRendered}
+            setVennDiagramRendered={setVennDiagramRendered}
+            handleFileChange={handleFileChange}
+            handleUpload={handleUpload}
+            chatMessages={chatMessages}
+            setChatMessages={setChatMessages}
+          />
+        ) : (
+          <ManualInput
+            backendEndpoint={backendEndpoint}
+            setParsedContent={setParsedContent}
+            parsedContent={parsedContent}
+            setIsLoadingJobs={setIsLoadingJobs}
+            setJobListings={setJobListings}
+            setSelectedCareerPath={setSelectedCareerPath}
+            setIsAnalyzing={setIsAnalyzing}
+            chatMessages={chatMessages}
+            setChatMessages={setChatMessages}
+            formData={manualFormData}
+            setFormData={setManualFormData}
+          />
+        )}
+      </div>
 
       {/* Right Sidebar with job listings */}
       <JobListings
