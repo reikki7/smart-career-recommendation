@@ -153,7 +153,7 @@ function ManualInput({
     }
   };
   return (
-    <div className="max-w-3xl mx-auto w-full px-6 py-12 space-y-8">
+    <div className="max-w-2xl mx-auto w-full px-4 py-12 space-y-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -50 }}
@@ -172,7 +172,7 @@ function ManualInput({
 
       {/* Chatbox Section */}
       {parsedContent && !loading && (
-        <div className="bg-white shadow-xl rounded-lg p-8 border border-gray-100">
+        <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
           <Chatbox
             parsedContent={parsedContent}
             messages={chatMessages}
@@ -345,7 +345,7 @@ function ManualInput({
                       e.target.value
                     )
                   }
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                  className="w-full border border-gray-300 h-[200px] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                 />
                 {formData.experience.length > 1 && (
                   <button
@@ -397,7 +397,7 @@ function ManualInput({
                       e.target.value
                     )
                   }
-                  className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                  className="w-full border h-[200px] border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                 />
                 {formData.projects.length > 1 && (
                   <button

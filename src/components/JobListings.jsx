@@ -29,47 +29,52 @@ function JobListings({
           }
           exit={isMobile ? { opacity: 0, x: 100 } : { width: 0, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="bg-white shadow-xl border-l z-20 border-gray-200 flex flex-col h-screen sticky top-0 overflow-hidden"
+          className="bg-white shadow-xl border-l z-20 border-gray-200 flex flex-col h-full fixed top-0 right-0 w-full md:w-auto md:relative md:h-screen"
+          style={{ overflowY: "hidden", maxHeight: "100vh" }}
         >
           {/* Header */}
-          <div className="p-6 pb-4">
+          <div className="p-4 md:p-6 pb-3 md:pb-4 sticky top-0 bg-white z-10">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-blue-50 rounded-lg p-4 border border-blue-100"
+              className="bg-blue-50 rounded-lg p-3 md:p-4 border border-blue-100"
             >
-              {/* Header (Mobile) */}
+              {/* Header */}
               <div className="flex justify-between items-center mb-2">
-                <h2 className="text-xl font-bold text-blue-800 flex items-center">
+                <h2 className="text-lg md:text-xl font-bold text-blue-800 flex items-center">
                   {isMobile ? (
-                    <Briefcase className="mr-2 text-blue-600" size={24} />
+                    <img
+                      src={linkedinIcon}
+                      alt="LinkedIn"
+                      className="w-5 h-5 md:w-6 md:h-6 mr-2"
+                    />
                   ) : (
                     <img
                       src={linkedinIcon}
                       alt="LinkedIn"
-                      className="w-6 h-6 mr-2"
+                      className="w-5 h-5 md:w-6 md:h-6 mr-2"
                     />
                   )}
                   Job Listings
                 </h2>
-                {isMobile && onClose && (
+                {onClose && (
                   <button
                     onClick={onClose}
                     className="text-gray-500 hover:text-gray-700"
                     aria-label="Close sidebar"
                   >
-                    <X size={24} />
+                    <X size={20} />
                   </button>
                 )}
               </div>
 
-              <p className="text-sm text-gray-700">
+              <p className="text-xs md:text-sm text-gray-700">
                 Current openings that match your profile
               </p>
 
               {selectedCareerPath && (
-                <p className="text-xs text-gray-600 mt-2">
+                <p className="text-xs text-gray-600 mt-1 md:mt-2">
                   Showing jobs for <strong>{selectedCareerPath}</strong>
                 </p>
               )}
@@ -77,7 +82,10 @@ function JobListings({
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-6 pt-0">
+          <div
+            className="flex-1 overflow-y-auto p-4 md:p-6 pt-0"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedCareerPath || "all-jobs"}
@@ -87,7 +95,7 @@ function JobListings({
                 transition={{ duration: 0.3 }}
               >
                 {filteredJobs.length > 0 ? (
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4 pb-4 md:pb-0">
                     {filteredJobs.map((job, idx) => (
                       <motion.a
                         key={idx}
@@ -98,39 +106,39 @@ function JobListings({
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
                         transition={{ duration: 0.3, delay: idx * 0.05 }}
-                        className="block bg-white shadow-sm rounded-lg p-4 border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all duration-200 cursor-pointer"
+                        className="block bg-white shadow-sm rounded-lg p-3 md:p-4 border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all duration-200 cursor-pointer"
                       >
                         <div>
                           {job.companyLogo && (
                             <img
                               src={job.companyLogo}
                               alt={job.organization}
-                              className="w-12 h-12 object-contain mb-3"
+                              className="w-10 h-10 md:w-12 md:h-12 object-contain mb-2 md:mb-3"
                             />
                           )}
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-md font-semibold text-gray-800">
+                          <div className="flex justify-between items-start mb-1 md:mb-2">
+                            <h3 className="text-sm md:text-md font-semibold text-gray-800">
                               {job.title}
                             </h3>
                           </div>
-                          <p className="text-sm text-gray-600 mb-2">
+                          <p className="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">
                             {job.organization}
                           </p>
 
                           {/* Career Path Tag */}
                           {job.careerPath && (
-                            <div className="mb-2">
-                              <span className="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                            <div className="mb-1 md:mb-2">
+                              <span className="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-0.5 rounded-full text-xs">
                                 {job.careerPath}
                               </span>
                             </div>
                           )}
 
                           {/* Location */}
-                          <div className="flex items-center text-gray-600 text-sm mb-3">
+                          <div className="flex items-center text-gray-600 text-xs md:text-sm mb-2 md:mb-3">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 mr-1"
+                              className="h-3 w-3 md:h-4 md:w-4 mr-1"
                               fill="none"
                               viewBox="0 0 24 24"
                               stroke="currentColor"
@@ -153,7 +161,7 @@ function JobListings({
 
                           {/* Date */}
                           <div
-                            className={`flex items-center mt-2 ${
+                            className={`flex items-center mt-1 md:mt-2 ${
                               job.date_posted
                                 ? "justify-between"
                                 : "justify-end"
@@ -169,9 +177,9 @@ function JobListings({
                               </p>
                             ) : null}
 
-                            <span className="text-blue-600 text-sm font-medium flex items-center">
+                            <span className="text-blue-600 text-xs md:text-sm font-medium flex items-center">
                               View Details
-                              <ChevronRight size={16} className="ml-1" />
+                              <ChevronRight size={14} className="ml-1" />
                             </span>
                           </div>
                         </div>
@@ -182,12 +190,12 @@ function JobListings({
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="flex flex-col items-center justify-center py-8 px-4 text-center"
+                    className="flex flex-col items-center justify-center py-6 md:py-8 px-4 text-center"
                   >
-                    <div className="bg-gray-50 rounded-full p-4 mb-3">
+                    <div className="bg-gray-50 rounded-full p-3 md:p-4 mb-2 md:mb-3">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-10 w-10 text-gray-400"
+                        className="h-8 w-8 md:h-10 md:w-10 text-gray-400"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -200,10 +208,10 @@ function JobListings({
                         />
                       </svg>
                     </div>
-                    <h3 className="text-gray-700 font-medium mb-2">
+                    <h3 className="text-sm md:text-base text-gray-700 font-medium mb-1 md:mb-2">
                       No relevant jobs found
                     </h3>
-                    <p className="text-gray-500 text-sm">
+                    <p className="text-xs md:text-sm text-gray-500">
                       {selectedCareerPath
                         ? `We couldn't find any jobs matching "${selectedCareerPath}" at this time.`
                         : "We couldn't find any jobs matching your profile at this time."}
@@ -216,7 +224,7 @@ function JobListings({
                             onClose();
                           }
                         }}
-                        className="mt-4 text-blue-600 text-sm font-medium"
+                        className="mt-3 md:mt-4 text-blue-600 text-xs md:text-sm font-medium"
                       >
                         View all available positions
                       </button>

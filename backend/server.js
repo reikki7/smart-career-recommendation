@@ -16,14 +16,14 @@ app.use(cors());
 app.use(express.json());
 
 const storage = multer.diskStorage({
-  destination: (cb) => {
+  destination: (req, file, cb) => {
     const uploadDir = path.join(__dirname, "uploads");
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
     cb(null, uploadDir);
   },
-  filename: (file, cb) => {
+  filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(null, uniqueSuffix + "-" + file.originalname);
   },
@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: { fileSize: 10 * 1024 * 1024 },
-  fileFilter: (file, cb) => {
+  fileFilter: (req, file, cb) => {
     if (file.mimetype === "application/pdf") {
       cb(null, true);
     } else {
@@ -290,7 +290,17 @@ app.get("/api/linkedin-jobs", async (req, res) => {
         .find(".job-search-card__location")
         .text()
         .trim();
-      const url = $(element).find(".base-card__full-link").attr("href");
+
+      // Extract job ID from data-entity-urn and build the URL
+      const entityUrn = $(element).attr("data-entity-urn");
+      let url = "";
+
+      if (entityUrn) {
+        // Extract job ID from format "urn:li:jobPosting:4184053904"
+        const jobId = entityUrn.split(":").pop();
+        url = `https://www.linkedin.com/jobs/view/${jobId}`;
+      }
+
       const companyLogo = $(element)
         .find("img.artdeco-entity-image")
         .attr("data-delayed-url");

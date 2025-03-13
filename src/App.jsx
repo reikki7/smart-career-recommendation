@@ -24,7 +24,7 @@ function App() {
   const [isLoadingJobs, setIsLoadingJobs] = useState(false);
   const [vennDiagramRendered, setVennDiagramRendered] = useState(false);
   const [selectedCareerPath, setSelectedCareerPath] = useState("");
-  const [inputMode, setInputMode] = useState("upload");
+  const [inputMode, setInputMode] = useState("manual");
   const [isSticky, setIsSticky] = useState(false);
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const [showRightSidebar, setShowRightSidebar] = useState(false);
@@ -134,9 +134,6 @@ function App() {
     } finally {
       setIsAnalyzing(false);
       setLoading(false);
-      if (isMobile) {
-        setShowLeftSidebar(true);
-      }
     }
   };
 
@@ -144,6 +141,10 @@ function App() {
     if (parsedContent) {
       setVennDiagramRendered(false);
       setIsLoadingJobs(true);
+
+      if (isMobile) {
+        setShowLeftSidebar(true);
+      }
     } else if (pdfContent) {
       try {
         const cleanedJson = pdfContent
@@ -172,18 +173,33 @@ function App() {
   }, [pdfContent, parsedContent]);
 
   useEffect(() => {
+    // Calculate header height once on mount
+    const headerHeight = tabHeaderRef.current?.offsetHeight || 0;
+
     const handleScroll = () => {
-      if (tabHeaderRef.current) {
-        const headerPos = tabHeaderRef.current.getBoundingClientRect().top;
-        setIsSticky(headerPos <= 0);
-      }
+      if (!tabHeaderRef.current) return;
+      setIsSticky(window.scrollY > tabHeaderRef.current.offsetTop);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Add placeholder with exact header height
+    if (isSticky) {
+      const placeholder = document.createElement("div");
+      placeholder.style.height = `${headerHeight}px`;
+      placeholder.id = "header-placeholder";
+      tabHeaderRef.current.parentNode.insertBefore(
+        placeholder,
+        tabHeaderRef.current
+      );
+    } else {
+      const placeholder = document.getElementById("header-placeholder");
+      if (placeholder) placeholder.remove();
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isSticky]);
 
   useEffect(() => {
     async function fetchJobListings(title) {
@@ -273,6 +289,33 @@ function App() {
             <FileText size={24} />
           </button>
           <button
+            onClick={() => {
+              setShowLeftSidebar(false);
+              setShowRightSidebar(false);
+            }}
+            className={`rounded-full p-3 shadow-lg  ${
+              showLeftSidebar || showRightSidebar
+                ? "bg-white text-blue-600"
+                : "bg-blue-600 text-white"
+            }`}
+            aria-label="Home"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+              />
+            </svg>
+          </button>
+          <button
             onClick={toggleRightSidebar}
             className={`rounded-full p-3 shadow-lg ${
               showRightSidebar
@@ -288,15 +331,17 @@ function App() {
 
       {/* Left Sidebar (Analysis Results) */}
       <AnimatePresence mode="wait">
-        {isMobile && showLeftSidebar && (
+        {((isMobile && showLeftSidebar) || (!isMobile && parsedContent)) && (
           <motion.div
             key="leftSidebar"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
+            initial={isMobile ? { opacity: 0, x: -100 } : { opacity: 0 }}
+            animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1 }}
+            exit={isMobile ? { opacity: 0, x: -100 } : { opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 z-20"
-            style={{ width: "100%" }}
+            className={`${isMobile ? "absolute inset-0 z-20" : "w-1/4"} ${
+              !isMobile ? "border-r border-gray-200" : ""
+            }`}
+            style={isMobile ? { width: "100%" } : {}}
           >
             <AnalysisResult
               parsedContent={parsedContent}
@@ -325,27 +370,27 @@ function App() {
         >
           <button
             onClick={() => {
-              setInputMode("upload");
-            }}
-            className={`py-2 px-4 font-semibold ${
-              inputMode === "upload"
-                ? "border-b-2 border-blue-600 text-blue-600"
-                : "text-gray-600"
-            }`}
-          >
-            Resume Upload
-          </button>
-          <button
-            onClick={() => {
               setInputMode("manual");
             }}
-            className={`py-2 px-4 font-semibold ${
+            className={`py-2 px-4 font-semibold border-b-2 ${
               inputMode === "manual"
-                ? "border-b-2 border-blue-600 text-blue-600"
-                : "text-gray-600"
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-600"
             }`}
           >
             Manual Input
+          </button>
+          <button
+            onClick={() => {
+              setInputMode("upload");
+            }}
+            className={`py-2 px-4 font-semibold border-b-2 ${
+              inputMode === "upload"
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-600"
+            }`}
+          >
+            Resume Upload
           </button>
         </div>
 
@@ -383,15 +428,18 @@ function App() {
 
       {/* Right Sidebar (Job Listings) */}
       <AnimatePresence mode="wait">
-        {isMobile && showRightSidebar && (
+        {((isMobile && showRightSidebar) ||
+          (!isMobile && jobListings.length > 0)) && (
           <motion.div
             key="rightSidebar"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
+            initial={isMobile ? { opacity: 0, x: 100 } : { opacity: 0 }}
+            animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1 }}
+            exit={isMobile ? { opacity: 0, x: 100 } : { opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 z-20"
-            style={{ width: "100%" }}
+            className={`${isMobile ? "absolute inset-0 z-20" : "w-1/4"} ${
+              !isMobile ? "border-l border-gray-200" : ""
+            }`}
+            style={isMobile ? { width: "100%" } : {}}
           >
             <JobListings
               jobListings={jobListings}
