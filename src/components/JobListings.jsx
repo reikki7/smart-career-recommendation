@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, X, Briefcase } from "lucide-react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import linkedinIcon from "../assets/Linkedin_icon.svg";
@@ -10,6 +10,8 @@ function JobListings({
   jobListings,
   selectedCareerPath,
   setSelectedCareerPath,
+  isMobile,
+  onClose,
 }) {
   const filteredJobs = selectedCareerPath
     ? jobListings.filter((job) => job.careerPath === selectedCareerPath)
@@ -21,28 +23,47 @@ function JobListings({
     <AnimatePresence>
       {showEmptyState && (
         <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "25%", opacity: 1 }}
-          exit={{ width: 0, opacity: 0 }}
-          transition={{ duration: 0.15 }}
-          className="bg-white shadow-xl border-l z-20 border-gray-200 flex flex-col h-screen sticky top-0"
+          initial={isMobile ? { opacity: 0, x: 100 } : { width: 0, opacity: 0 }}
+          animate={
+            isMobile ? { opacity: 1, x: 0 } : { width: "100%", opacity: 1 }
+          }
+          exit={isMobile ? { opacity: 0, x: 100 } : { width: 0, opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="bg-white shadow-xl border-l z-20 border-gray-200 flex flex-col h-screen sticky top-0 overflow-hidden"
         >
           {/* Header */}
           <div className="p-6 pb-4">
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.05 }}
+              transition={{ duration: 0.3 }}
               className="bg-blue-50 rounded-lg p-4 border border-blue-100"
             >
-              <h2 className="text-xl font-bold text-blue-800 mb-2 flex items-center">
-                <img
-                  src={linkedinIcon}
-                  alt="LinkedIn"
-                  className="w-6 h-6 mr-2"
-                />
-                Job Listings
-              </h2>
+              {/* Header (Mobile) */}
+              <div className="flex justify-between items-center mb-2">
+                <h2 className="text-xl font-bold text-blue-800 flex items-center">
+                  {isMobile ? (
+                    <Briefcase className="mr-2 text-blue-600" size={24} />
+                  ) : (
+                    <img
+                      src={linkedinIcon}
+                      alt="LinkedIn"
+                      className="w-6 h-6 mr-2"
+                    />
+                  )}
+                  Job Listings
+                </h2>
+                {isMobile && onClose && (
+                  <button
+                    onClick={onClose}
+                    className="text-gray-500 hover:text-gray-700"
+                    aria-label="Close sidebar"
+                  >
+                    <X size={24} />
+                  </button>
+                )}
+              </div>
+
               <p className="text-sm text-gray-700">
                 Current openings that match your profile
               </p>
@@ -63,7 +84,7 @@ function JobListings({
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.05 }}
+                transition={{ duration: 0.3 }}
               >
                 {filteredJobs.length > 0 ? (
                   <div className="space-y-4">
@@ -76,7 +97,7 @@ function JobListings({
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.05, delay: idx * 0.02 }}
+                        transition={{ duration: 0.3, delay: idx * 0.05 }}
                         className="block bg-white shadow-sm rounded-lg p-4 border border-gray-200 hover:shadow-md hover:border-blue-200 transition-all duration-200 cursor-pointer"
                       >
                         <div>
@@ -189,7 +210,12 @@ function JobListings({
                     </p>
                     {selectedCareerPath && (
                       <button
-                        onClick={() => setSelectedCareerPath("")}
+                        onClick={() => {
+                          setSelectedCareerPath("");
+                          if (isMobile && onClose) {
+                            onClose();
+                          }
+                        }}
                         className="mt-4 text-blue-600 text-sm font-medium"
                       >
                         View all available positions

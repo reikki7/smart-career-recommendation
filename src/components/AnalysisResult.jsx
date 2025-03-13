@@ -1,23 +1,46 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Layers, Award } from "lucide-react";
+import { FileText, Layers, Award, X } from "lucide-react";
 
 function AnalysisResult({
   parsedContent,
   onCareerPathClick,
   selectedCareerPath,
+  isMobile,
+  onClose,
 }) {
   return (
     <AnimatePresence>
       {parsedContent && (
         <motion.div
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: "25%", opacity: 1 }}
-          exit={{ width: 0, opacity: 0 }}
+          initial={
+            isMobile ? { opacity: 0, x: -100 } : { width: 0, opacity: 0 }
+          }
+          animate={
+            isMobile ? { opacity: 1, x: 0 } : { width: "100%", opacity: 1 }
+          }
+          exit={isMobile ? { opacity: 0, x: -100 } : { width: 0, opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="bg-white shadow-xl border-r z-20 border-gray-200 p-6 overflow-y-auto h-screen sticky top-0"
         >
           <div className="space-y-6">
+            {/* Header (Mobile) */}
+            {isMobile && onClose && (
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold text-blue-800 flex items-center">
+                  <FileText className="mr-2 text-blue-600" size={24} />
+                  Analysis Results
+                </h2>
+                <button
+                  onClick={onClose}
+                  className="text-gray-500 hover:text-gray-700"
+                  aria-label="Close sidebar"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+            )}
+
             {/* Summary */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -85,7 +108,13 @@ function AnalysisResult({
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + idx * 0.1 }}
-                      onClick={() => onCareerPathClick(job.jobTitle)}
+                      onClick={() => {
+                        onCareerPathClick(job.jobTitle);
+                        // If on mobile, close sidebar after selection
+                        if (isMobile && onClose) {
+                          onClose();
+                        }
+                      }}
                       className={`bg-white shadow-sm rounded-lg p-3 border ${
                         isSelected
                           ? "border-blue-300 bg-blue-50"

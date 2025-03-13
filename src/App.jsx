@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { FileText, Briefcase } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import ManualInput from "./components/ManualInput";
 import ResumeUpload from "./components/ResumeUpload";
@@ -24,6 +26,9 @@ function App() {
   const [selectedCareerPath, setSelectedCareerPath] = useState("");
   const [inputMode, setInputMode] = useState("upload");
   const [isSticky, setIsSticky] = useState(false);
+  const [showLeftSidebar, setShowLeftSidebar] = useState(false);
+  const [showRightSidebar, setShowRightSidebar] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     {
       role: "assistant",
@@ -44,6 +49,18 @@ function App() {
 
   const backendEndpoint =
     import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -117,6 +134,9 @@ function App() {
     } finally {
       setIsAnalyzing(false);
       setLoading(false);
+      if (isMobile) {
+        setShowLeftSidebar(true);
+      }
     }
   };
 
@@ -226,22 +246,80 @@ function App() {
     }
   };
 
+  const toggleLeftSidebar = () => {
+    setShowLeftSidebar(!showLeftSidebar);
+    if (!showLeftSidebar) setShowRightSidebar(false);
+  };
+
+  const toggleRightSidebar = () => {
+    setShowRightSidebar(!showRightSidebar);
+    if (!showRightSidebar) setShowLeftSidebar(false);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Left Sidebar with the analysis results */}
-      <AnalysisResult
-        parsedContent={parsedContent}
-        onCareerPathClick={handleCareerPathClick}
-        selectedCareerPath={selectedCareerPath}
-      />
+    <div className="min-h-screen bg-gray-50 flex relative">
+      {/* Mobile Toggle Buttons */}
+      {isMobile && parsedContent && (
+        <div className="fixed bottom-4 left-0 right-0 flex justify-center z-30 gap-4">
+          <button
+            onClick={toggleLeftSidebar}
+            className={`rounded-full p-3 shadow-lg ${
+              showLeftSidebar
+                ? "bg-blue-600 text-white"
+                : "bg-white text-blue-600"
+            }`}
+            aria-label="Toggle Analysis Results"
+          >
+            <FileText size={24} />
+          </button>
+          <button
+            onClick={toggleRightSidebar}
+            className={`rounded-full p-3 shadow-lg ${
+              showRightSidebar
+                ? "bg-blue-600 text-white"
+                : "bg-white text-blue-600"
+            }`}
+            aria-label="Toggle Job Listings"
+          >
+            <Briefcase size={24} />
+          </button>
+        </div>
+      )}
+
+      {/* Left Sidebar (Analysis Results) */}
+      <AnimatePresence mode="wait">
+        {isMobile && showLeftSidebar && (
+          <motion.div
+            key="leftSidebar"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 z-20"
+            style={{ width: "100%" }}
+          >
+            <AnalysisResult
+              parsedContent={parsedContent}
+              onCareerPathClick={handleCareerPathClick}
+              selectedCareerPath={selectedCareerPath}
+              isMobile={isMobile}
+              onClose={toggleLeftSidebar}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main Content Section */}
-      <div className="flex-1 flex flex-col">
+      <div
+        className={`flex-1 flex flex-col ${
+          isMobile && (showLeftSidebar || showRightSidebar) ? "hidden" : ""
+        }`}
+      >
         {isSticky && <div className="h-12"></div>}
         {/* Tab Header */}
         <div
           ref={tabHeaderRef}
-          className={`flex justify-center space-x-4 border-b border-gray-200 bg-gray-50 z-0 w-full ${
+          className={`flex justify-center space-x-4 border-b border-gray-200 bg-gray-50 z-10 w-full ${
             isSticky ? "fixed top-0 left-0 right-0" : ""
           }`}
         >
@@ -271,7 +349,6 @@ function App() {
           </button>
         </div>
 
-        {/* Render the appropriate input form */}
         {inputMode === "upload" ? (
           <ResumeUpload
             fileName={fileName}
@@ -304,12 +381,28 @@ function App() {
         )}
       </div>
 
-      {/* Right Sidebar with job listings */}
-      <JobListings
-        jobListings={jobListings}
-        selectedCareerPath={selectedCareerPath}
-        setSelectedCareerPath={setSelectedCareerPath}
-      />
+      {/* Right Sidebar (Job Listings) */}
+      <AnimatePresence mode="wait">
+        {isMobile && showRightSidebar && (
+          <motion.div
+            key="rightSidebar"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 z-20"
+            style={{ width: "100%" }}
+          >
+            <JobListings
+              jobListings={jobListings}
+              selectedCareerPath={selectedCareerPath}
+              setSelectedCareerPath={setSelectedCareerPath}
+              isMobile={isMobile}
+              onClose={toggleRightSidebar}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
