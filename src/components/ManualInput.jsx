@@ -217,7 +217,7 @@ function ManualInput({
               >
                 <input
                   type="text"
-                  placeholder="School"
+                  placeholder="School/University"
                   value={edu.school}
                   onChange={(e) =>
                     handleNestedChange(
@@ -243,8 +243,9 @@ function ManualInput({
                   style={{ appearance: "none" }}
                 >
                   <option className="text-black/50" value="">
-                    Select Degree
+                    Choose an Education Level
                   </option>
+                  <option value="associate">High School</option>
                   <option value="associate">Associate</option>
                   <option value="bachelor's">Bachelor's</option>
                   <option value="master's">Master's</option>
