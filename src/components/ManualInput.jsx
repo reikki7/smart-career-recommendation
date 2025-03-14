@@ -164,7 +164,7 @@ function ManualInput({
           <img src={webIcon} className="mr-3 w-10 h-10" alt="Jobify" />
           Jobify
         </h1>
-        <p className="text-lg text-gray-600">
+        <p className="text-gray-600 max-w-md mx-auto">
           Fill in your resume details manually and get personalized career
           matches and professional insights.
         </p>
@@ -243,7 +243,7 @@ function ManualInput({
                   style={{ appearance: "none" }}
                 >
                   <option className="text-black/50" value="">
-                    Choose an Education Level
+                    Select an Education Level
                   </option>
                   <option value="associate">High School</option>
                   <option value="associate">Associate</option>
