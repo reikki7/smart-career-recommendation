@@ -334,14 +334,22 @@ function App() {
         {((isMobile && showLeftSidebar) || (!isMobile && parsedContent)) && (
           <motion.div
             key="leftSidebar"
-            initial={isMobile ? { opacity: 0, x: -100 } : { opacity: 0 }}
-            animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1 }}
-            exit={isMobile ? { opacity: 0, x: -100 } : { opacity: 0 }}
+            initial={
+              isMobile ? { opacity: 0, x: -100 } : { width: 0, opacity: 0 }
+            }
+            animate={
+              isMobile ? { opacity: 1, x: 0 } : { width: "25%", opacity: 1 }
+            }
+            exit={isMobile ? { opacity: 0, x: -100 } : { width: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`${isMobile ? "absolute inset-0 z-20" : "w-1/4"} ${
-              !isMobile ? "border-r border-gray-200" : ""
-            }`}
-            style={isMobile ? { width: "100%" } : {}}
+            className={`${
+              isMobile ? "fixed inset-0 z-20" : "sticky top-0 h-screen"
+            } ${!isMobile ? "border-r border-gray-200" : ""}`}
+            style={
+              isMobile
+                ? { width: "100%" }
+                : { maxHeight: "100vh", overflowY: "auto" }
+            }
           >
             <AnalysisResult
               parsedContent={parsedContent}
@@ -353,7 +361,6 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-
       {/* Main Content Section */}
       <div
         className={`flex-1 flex flex-col ${
@@ -432,14 +439,22 @@ function App() {
           (!isMobile && jobListings.length > 0)) && (
           <motion.div
             key="rightSidebar"
-            initial={isMobile ? { opacity: 0, x: 100 } : { opacity: 0 }}
-            animate={isMobile ? { opacity: 1, x: 0 } : { opacity: 1 }}
-            exit={isMobile ? { opacity: 0, x: 100 } : { opacity: 0 }}
+            initial={
+              isMobile ? { opacity: 0, x: 100 } : { width: 0, opacity: 0 }
+            }
+            animate={
+              isMobile ? { opacity: 1, x: 0 } : { width: "25%", opacity: 1 }
+            }
+            exit={isMobile ? { opacity: 0, x: 100 } : { width: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`${isMobile ? "absolute inset-0 z-20" : "w-1/4"} ${
-              !isMobile ? "border-l border-gray-200" : ""
-            }`}
-            style={isMobile ? { width: "100%" } : {}}
+            className={`${
+              isMobile ? "fixed inset-0 z-20" : "sticky top-0 h-screen"
+            } ${!isMobile ? "border-l border-gray-200" : ""}`}
+            style={
+              isMobile
+                ? { width: "100%" }
+                : { maxHeight: "100vh", overflowY: "auto" }
+            }
           >
             <JobListings
               jobListings={jobListings}
