@@ -2,7 +2,7 @@
   "name": "test",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://reikki7.github.io/ai-job-recommendation",
+  "homepage": "https://reikki7.github.io/smart-career-recommendation",
   "type": "module",
   "scripts": {
     "dev": "vite",
