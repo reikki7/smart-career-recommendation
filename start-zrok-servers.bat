@@ -8,6 +8,6 @@ wt ^
   powershell.exe -NoExit -File "%TEMP%\run_node.ps1" ^
   ; new-tab ^
   --title "Zrok Shares" ^
-  powershell.exe -NoExit -Command "zrok share reserved backendjobify" ^
+  powershell.exe -NoExit -Command "zrok share reserved jobifybackend" ^
   ; split-pane -H ^
-  powershell.exe -NoExit -Command "zrok share reserved lmstudiojobify"
+  powershell.exe -NoExit -Command "zrok share reserved lmstudioserver"

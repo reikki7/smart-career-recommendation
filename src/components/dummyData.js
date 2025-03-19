@@ -3,13 +3,13 @@ export const dummyData = [
     name: "Alex Johnson",
     education: [
       {
-        school: "Tech University",
+        school: "Massachusetts Institute of Technology",
         degree: "bachelor's",
         major: "Computer Science",
         gpa: "3.7",
       },
       {
-        school: "Tech University",
+        school: "Massachusetts Institute of Technology",
         degree: "master's",
         major: "Software Engineering",
         gpa: "3.9",
@@ -50,7 +50,7 @@ export const dummyData = [
     name: "Jane Williams",
     education: [
       {
-        school: "Art & Design College",
+        school: "Rhode Island School of Design",
         degree: "bachelor's",
         major: "Graphic Design",
         gpa: "3.4",
@@ -86,7 +86,7 @@ export const dummyData = [
     name: "Michael Carter",
     education: [
       {
-        school: "Business School International",
+        school: "Harvard Business School",
         degree: "master's",
         major: "Business Administration",
         gpa: "3.6",
@@ -122,13 +122,13 @@ export const dummyData = [
     name: "Emily Kim",
     education: [
       {
-        school: "Global University",
+        school: "Stockholm School of Economics",
         degree: "bachelor's",
         major: "Marketing",
         gpa: "3.5",
       },
       {
-        school: "Global University",
+        school: "Stockholm School of Economics",
         degree: "master's",
         major: "Digital Marketing",
         gpa: "3.8",
@@ -164,7 +164,7 @@ export const dummyData = [
     name: "Daniel Saunders",
     education: [
       {
-        school: "Engineering Institute",
+        school: "Georgia Institute of Technology",
         degree: "bachelor's",
         major: "Mechanical Engineering",
         gpa: "3.4",
@@ -205,7 +205,7 @@ export const dummyData = [
     name: "Robert Lee",
     education: [
       {
-        school: "National University",
+        school: "Carnegie Mellon University",
         degree: "PhD",
         major: "Cybersecurity",
         gpa: "3.95",
@@ -246,7 +246,7 @@ export const dummyData = [
     name: "Sarah Patel",
     education: [
       {
-        school: "International Culinary Institute",
+        school: "Culinary Institute of America",
         degree: "associate",
         major: "Culinary Arts",
         gpa: "3.2",
@@ -282,7 +282,7 @@ export const dummyData = [
     name: "Victor Martinez",
     education: [
       {
-        school: "Film Academy",
+        school: "University of Southern California School of Cinematic Arts",
         degree: "bachelor's",
         major: "Film Production",
         gpa: "3.3",
@@ -317,6 +317,100 @@ export const dummyData = [
     additional: {
       languages: ["English", "Spanish"],
       softSkills: ["Collaboration", "Storytelling", "Problem Solving"],
+    },
+  },
+  {
+    name: "Linda Nguyen",
+    education: [
+      {
+        school: "Stanford University",
+        degree: "bachelor's",
+        major: "Electrical Engineering",
+        gpa: "3.8",
+      },
+      {
+        school: "Stanford University",
+        degree: "master's",
+        major: "Computer Engineering",
+        gpa: "3.9",
+      },
+    ],
+    thesisAbstract:
+      "This thesis explores advanced digital signal processing techniques for improving wireless communication systems.",
+    experience: [
+      {
+        title: "Software Engineer",
+        description:
+          "Developed and maintained embedded systems for IoT devices.",
+      },
+      {
+        title: "Research Assistant",
+        description:
+          "Conducted experiments on FPGA-based system optimizations.",
+      },
+    ],
+    projects: [
+      {
+        title: "Smart Home Automation",
+        description:
+          "Built a home automation system integrating IoT sensors and AI for predictive maintenance.",
+      },
+      {
+        title: "Wireless Communication Prototype",
+        description:
+          "Designed a prototype for next-generation wireless communication protocols.",
+      },
+    ],
+    additional: {
+      languages: ["English", "Vietnamese"],
+      softSkills: ["Innovative", "Analytical", "Problem Solving"],
+    },
+  },
+  {
+    name: "Carlos Ruiz",
+    education: [
+      {
+        school: "Universidad Complutense de Madrid",
+        degree: "bachelor's",
+        major: "International Relations",
+        gpa: "3.6",
+      },
+      {
+        school: "Universidad Carlos III de Madrid",
+        degree: "master's",
+        major: "European Studies",
+        gpa: "3.8",
+      },
+    ],
+    thesisAbstract:
+      "This thesis analyzes the impact of EU foreign policies on member states' economic growth.",
+    experience: [
+      {
+        title: "Policy Analyst",
+        description:
+          "Evaluated international policies and drafted reports for government agencies.",
+      },
+      {
+        title: "Research Intern",
+        description:
+          "Assisted in data collection and analysis for EU policy research projects.",
+      },
+    ],
+    projects: [
+      {
+        title: "EU Policy Dashboard",
+        description:
+          "Developed an interactive dashboard visualizing key metrics of EU policy impacts.",
+      },
+      {
+        title: "Economic Impact Study",
+        description:
+          "Conducted a study on how policy changes affect economic performance in Europe.",
+      },
+    ],
+    additional: {
+      languages: ["Spanish", "English"],
+      softSkills: ["Critical Thinking", "Analytical", "Communication"],
     },
   },
 ];

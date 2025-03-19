@@ -6,9 +6,6 @@ export default defineConfig({
   base: "/smart-career-recommendation",
   plugins: [react()],
   server: {
-    allowedHosts: [
-      "89b2-103-147-8-167.ngrok-free.app",
-      "j6jffc7yqdr7.share.zrok.io",
-    ],
+    allowedHosts: [],
   },
 });
