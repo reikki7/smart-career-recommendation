@@ -173,33 +173,23 @@ function App() {
   }, [pdfContent, parsedContent]);
 
   useEffect(() => {
-    // Calculate header height once on mount
-    const headerHeight = tabHeaderRef.current?.offsetHeight || 0;
-
     const handleScroll = () => {
       if (!tabHeaderRef.current) return;
-      setIsSticky(window.scrollY > tabHeaderRef.current.offsetTop);
-    };
 
-    // Add placeholder with exact header height
-    if (isSticky) {
-      const placeholder = document.createElement("div");
-      placeholder.style.height = `${headerHeight}px`;
-      placeholder.id = "header-placeholder";
-      tabHeaderRef.current.parentNode.insertBefore(
-        placeholder,
-        tabHeaderRef.current
-      );
-    } else {
-      const placeholder = document.getElementById("header-placeholder");
-      if (placeholder) placeholder.remove();
-    }
+      // Calculate if we should be sticky yet
+      const shouldBeSticky = window.scrollY > tabHeaderRef.current.offsetTop;
+
+      // Only update state if it changed (prevents unnecessary re-renders)
+      if (shouldBeSticky !== isSticky) {
+        setIsSticky(shouldBeSticky);
+      }
+    };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isSticky]);
+  }, [isSticky]); // Include isSticky in dependencies
 
   useEffect(() => {
     async function fetchJobListings(title) {
@@ -371,8 +361,11 @@ function App() {
         {/* Tab Header */}
         <div
           ref={tabHeaderRef}
-          className={`flex justify-center space-x-4 border-b border-gray-200 bg-gray-50 z-10 w-full ${
-            isSticky ? "fixed top-0 left-0 right-0" : ""
+          className={`flex justify-center space-x-4 border-b border-gray-200 bg-gray-50 ${
+            isSticky ? "fixed z-5 top-0" : "z-10 w-full"
+          } ${
+            // Adjust width when sticky to not overlap sidebars
+            isSticky && !isMobile ? "left-[25%] right-[25%]" : "left-0 right-0"
           }`}
         >
           <button
