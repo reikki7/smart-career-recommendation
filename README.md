@@ -114,9 +114,3 @@ pnpm run deploy
 ## License
 
 [MIT License](LICENSE)
-
-## Acknowledgments
-
-- Icons from [Lucide React](https://lucide.dev/)
-- Animation library by Framer Motion
-- PDF parsing capabilities from pdf-parse
