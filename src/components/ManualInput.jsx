@@ -112,6 +112,13 @@ function ManualInput({
     setLoading(true);
     setIsLoadingJobs(false);
     setParsedContent(null);
+    setChatMessages([
+      {
+        role: "assistant",
+        content:
+          "I can answer questions about your results. How can I help you?",
+      },
+    ]);
 
     const payload = {
       name: formData.name,

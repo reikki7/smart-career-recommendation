@@ -90,6 +90,13 @@ function App() {
     setIsLoadingJobs(false);
     setPdfContent(null);
     setParsedContent(null);
+    setChatMessages([
+      {
+        role: "assistant",
+        content:
+          "I can answer questions about your results. How can I help you?",
+      },
+    ]);
 
     const formData = new FormData();
     formData.append("pdfFile", file);
