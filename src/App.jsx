@@ -183,10 +183,8 @@ function App() {
     const handleScroll = () => {
       if (!tabHeaderRef.current) return;
 
-      // Calculate if we should be sticky yet
       const shouldBeSticky = window.scrollY > tabHeaderRef.current.offsetTop;
 
-      // Only update state if it changed (prevents unnecessary re-renders)
       if (shouldBeSticky !== isSticky) {
         setIsSticky(shouldBeSticky);
       }
@@ -196,7 +194,7 @@ function App() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isSticky]); // Include isSticky in dependencies
+  }, [isSticky]);
 
   useEffect(() => {
     async function fetchJobListings(title) {
@@ -371,7 +369,6 @@ function App() {
           className={`flex justify-center space-x-4 border-b border-gray-200 bg-gray-50 ${
             isSticky ? "fixed z-5 top-0" : "z-10 w-full"
           } ${
-            // Adjust width when sticky to not overlap sidebars
             isSticky && !isMobile ? "left-[25%] right-[25%]" : "left-0 right-0"
           }`}
         >
