@@ -29,6 +29,7 @@ function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const [showRightSidebar, setShowRightSidebar] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isFormExpanded, setIsFormExpanded] = useState(true);
   const [chatMessages, setChatMessages] = useState([
     {
       role: "assistant",

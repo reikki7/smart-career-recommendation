@@ -197,7 +197,7 @@ export const dummyData = [
       },
     ],
     additional: {
-      languages: ["English"],
+      languages: ["English", "Hindi"],
       softSkills: ["Problem Solving", "Detail-Oriented", "Collaboration"],
     },
   },
@@ -274,7 +274,7 @@ export const dummyData = [
       },
     ],
     additional: {
-      languages: ["English", "Hindi"],
+      languages: ["English", "French"],
       softSkills: ["Creativity", "Team Management", "Adaptability"],
     },
   },
