@@ -24,7 +24,6 @@ function ManualInput({
 }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  // New state to control whether the manual form is visible
   const [isFormExpanded, setIsFormExpanded] = useState(true);
 
   const handleAddField = (field, value) => {
