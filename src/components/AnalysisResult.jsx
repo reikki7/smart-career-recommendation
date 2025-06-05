@@ -171,13 +171,33 @@ function AnalysisResult({
                             )}
                             <div className="flex flex-wrap gap-1">
                               {job.relevantExperience.map((exp, index) => {
-                                const role = exp.split(":")[0].trim();
+                                // Handle both old format (strings) and new format (objects)
+                                let displayText;
+                                if (typeof exp === "string") {
+                                  // Old format: "title: description"
+                                  displayText = exp.split(":")[0].trim();
+                                } else if (
+                                  typeof exp === "object" &&
+                                  exp.title
+                                ) {
+                                  // New format: {title: "...", description: "..."}
+                                  displayText = exp.title;
+                                } else {
+                                  // Fallback
+                                  displayText = String(exp);
+                                }
+
                                 return (
                                   <span
                                     key={index}
                                     className="bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full text-xs"
+                                    title={
+                                      typeof exp === "object" && exp.description
+                                        ? exp.description
+                                        : displayText
+                                    }
                                   >
-                                    {role}
+                                    {displayText}
                                   </span>
                                 );
                               })}

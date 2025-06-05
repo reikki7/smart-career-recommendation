@@ -2,12 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Chatbox from "./Chatbox";
 import webIcon from "/webIcon.png";
 import { Trash2Icon } from "lucide-react";
 import { getRandomUserData } from "./dummyData";
 import { ChevronDownIcon } from "lucide-react";
 import { DatabaseIcon } from "lucide-react";
+import ConfidenceVennDiagram from "./ConfidenceVennDiagram";
 
 function ManualInput({
   backendEndpoint,
@@ -144,8 +144,15 @@ function ManualInput({
           },
         }
       );
+
+      // Add detailed logging
+      console.log("=== RAW AI RESPONSE ===");
+      console.log("Full response:", response);
+      console.log("Response data:", response.data);
+      console.log("Job recommendations:", response.data.jobRecommendation);
+      console.log("=== END RAW AI RESPONSE ===");
+
       setParsedContent(response.data);
-      // Collapse the form upon successful analysis
       setIsFormExpanded(false);
 
       window.scrollTo({
@@ -180,19 +187,14 @@ function ManualInput({
           matches and professional insights.
         </p>
       </motion.div>
-
-      {/* Chatbox Section */}
-      {parsedContent && !loading && (
+      {/* Confidence Diagram Section */}
+      {parsedContent && !loading && parsedContent.jobRecommendation && (
         <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
-          <Chatbox
-            parsedContent={parsedContent}
-            messages={chatMessages}
-            setMessages={setChatMessages}
+          <ConfidenceVennDiagram
+            jobRecommendation={parsedContent.jobRecommendation}
           />
         </div>
       )}
-
-      {/* Toggle Form Expand/Collapse */}
       {parsedContent && (
         <button
           onClick={() => setIsFormExpanded((prev) => !prev)}
@@ -207,7 +209,6 @@ function ManualInput({
           <span className="text-left flex-grow">Modify Input Details</span>
         </button>
       )}
-
       {/* Form */}
       {isFormExpanded && (
         <>
@@ -584,7 +585,6 @@ function ManualInput({
           </AnimatePresence>
         </>
       )}
-
       {/* Analyze Button if Form is collapsed */}
       {!isFormExpanded && parsedContent && (
         <button
@@ -597,7 +597,6 @@ function ManualInput({
           <ArrowRight className="ml-2" size={18} />
         </button>
       )}
-
       {/* Loading Spinner */}
       <AnimatePresence mode="wait">
         {loading && (

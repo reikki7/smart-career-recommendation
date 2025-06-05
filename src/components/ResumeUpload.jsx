@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Upload, ArrowRight, Briefcase } from "lucide-react";
-import Chatbox from "./Chatbox";
 import webIcon from "/webIcon.png";
+import ConfidenceVennDiagram from "./ConfidenceVennDiagram";
 
 const ResumeUpload = ({
   fileName,
@@ -12,8 +12,6 @@ const ResumeUpload = ({
   parsedContent,
   handleFileChange,
   handleUpload,
-  chatMessages,
-  setChatMessages,
 }) => {
   return (
     <div
@@ -38,12 +36,11 @@ const ResumeUpload = ({
           </p>
         </motion.div>
 
-        {parsedContent && !loading && (
+        {/* Confidence Diagram Section */}
+        {parsedContent && !loading && parsedContent.jobRecommendation && (
           <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
-            <Chatbox
-              parsedContent={parsedContent}
-              messages={chatMessages}
-              setMessages={setChatMessages}
+            <ConfidenceVennDiagram
+              jobRecommendation={parsedContent.jobRecommendation}
             />
           </div>
         )}
