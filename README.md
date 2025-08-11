@@ -4,7 +4,7 @@
 
 ## Overview
 
-Jobify is an intelligent career recommendation platform that analyzes resume data to suggest optimal career paths and job opportunities. Built with React and a Node.js backend, Jobify offers personalized guidance based on your skills, experience, and education.
+Jobify is an intelligent career recommendation platform that analyzes resume data to suggest optimal career paths and job opportunities. Built with React.js and a flask backend, Jobify offers personalized guidance based on your skills, experience, and education.
 
 ## Features
 
@@ -13,7 +13,7 @@ Jobify is an intelligent career recommendation platform that analyzes resume dat
   - Resume upload (PDF analysis)
   - Manual input form for detailed profile creation
 
-- **AI-Powered Analysis**:
+- **BERT-Powered Analysis**:
 
   - Generates personalized career path recommendations
   - Maps skills to industry requirements
@@ -30,10 +30,7 @@ Jobify is an intelligent career recommendation platform that analyzes resume dat
   - Responsive design for mobile and desktop
   - Animated transitions with Framer Motion
   - Adaptive layout with collapsible sidebars
-
-- **Career Assistant**:
-  - Chat interface for questions about results
-  - Contextual guidance for career development
+  - View Similarity Score between career paths and uploaded Resume
 
 ## Getting Started
 
