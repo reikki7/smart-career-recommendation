@@ -1,0 +1,2335 @@
+[
+  {
+    "Information Security Analyst": {
+      "description": "Plan and carry out security measures to protect an organization's computer networks and systems. Analyze security breaches and develop solutions to vulnerabilities.",
+      "required_skills": [
+        "Network Security",
+        "Encryption",
+        "Firewall Configuration",
+        "Incident Response",
+        "Risk Assessment",
+        "Vulnerability Testing"
+      ],
+      "keywords": [
+        "cybersecurity",
+        "information security",
+        "threat detection",
+        "security policies",
+        "penetration testing"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "33% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$124,910 per year (2024)",
+      "industries": [
+        "Computer companies",
+        "Consulting firms",
+        "Financial services"
+      ]
+    }
+  },
+  {
+    "Data Scientist": {
+      "description": "Use analytical tools and techniques to extract meaningful insights from data. Build predictive models and visualizations to help organizations make data-driven decisions.",
+      "required_skills": [
+        "Statistics",
+        "Machine Learning",
+        "Data Visualization",
+        "Python",
+        "R",
+        "SQL"
+      ],
+      "keywords": [
+        "data analysis",
+        "big data",
+        "AI",
+        "predictive modeling",
+        "data mining",
+        "analytics"
+      ],
+      "typical_education": "Bachelor's degree in mathematics, statistics, computer science, or a related field (advanced degrees often preferred)",
+      "job_outlook": "36% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$112,590 per year (2024)",
+      "industries": ["Technology", "Finance", "Insurance", "Healthcare"]
+    }
+  },
+  {
+    "Web Developer": {
+      "description": "Create and maintain websites and web applications, ensuring functionality, performance, and usability. Collaborate with designers to implement site features.",
+      "required_skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Responsive Design",
+        "UX/UI Design",
+        "Web Frameworks (React, Angular)"
+      ],
+      "keywords": [
+        "web development",
+        "frontend",
+        "user interface",
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "UX"
+      ],
+      "typical_education": "Educational requirements vary (high school diploma to bachelor's degree)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$90,930 per year (2024)",
+      "industries": [
+        "Computer design services",
+        "Publishing",
+        "Consulting",
+        "Advertising",
+        "Self-employed/Startups"
+      ]
+    }
+  },
+  {
+    "Frontend Developer": {
+      "description": "Build the visual components of a website or application that users interact with. Focus on user interface design, performance optimization, and responsive design.",
+      "required_skills": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Responsive Design",
+        "Frameworks (React, Vue.js)",
+        "Cross-Browser Compatibility"
+      ],
+      "keywords": [
+        "frontend development",
+        "UI design",
+        "web applications",
+        "user experience",
+        "JavaScript frameworks"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field (or equivalent experience)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$90,930 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "E-commerce",
+        "Digital marketing agencies"
+      ]
+    }
+  },
+  {
+    "Network Architect": {
+      "description": "Design and implement data communication networks including LANs, WANs, and intranets. Plan network layout, choose hardware and protocols, and optimize performance and security.",
+      "required_skills": [
+        "Network Design",
+        "Routing and Switching",
+        "Network Security",
+        "Cloud Networking",
+        "Virtualization"
+      ],
+      "keywords": [
+        "network architecture",
+        "LAN",
+        "WAN",
+        "intranet",
+        "network protocols",
+        "Cisco",
+        "cloud infrastructure"
+      ],
+      "typical_education": "Bachelor's degree in computer or information science; extensive experience in network administration",
+      "job_outlook": "13% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$130,390 per year (2024)",
+      "industries": [
+        "Telecommunications",
+        "Information technology",
+        "Large enterprises"
+      ]
+    }
+  },
+  {
+    "IT Manager": {
+      "description": "Plan, coordinate, and direct computer-related activities in an organization. Determine IT goals and implement computer systems to meet those goals.",
+      "required_skills": [
+        "IT Strategy",
+        "Project Management",
+        "Leadership",
+        "Budgeting",
+        "Cybersecurity Planning"
+      ],
+      "keywords": [
+        "IT management",
+        "infrastructure",
+        "strategic planning",
+        "team leadership",
+        "IT operations"
+      ],
+      "typical_education": "Bachelor's degree in computer science or IT (often with related work experience)",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$171,200 per year (2024)",
+      "industries": [
+        "Finance",
+        "Healthcare",
+        "Technology",
+        "Government",
+        "Retail"
+      ]
+    }
+  },
+  {
+    "Research Scientist": {
+      "description": "Design innovative uses for new and existing computing technology. Conduct research and develop algorithms in areas like AI, machine learning, and data science.",
+      "required_skills": [
+        "Algorithm Development",
+        "Machine Learning",
+        "Mathematics",
+        "Research Methodology",
+        "Programming"
+      ],
+      "keywords": [
+        "research",
+        "innovation",
+        "algorithms",
+        "computing technology",
+        "AI",
+        "R&D"
+      ],
+      "typical_education": "Master's or doctoral degree in computer science or a related field",
+      "job_outlook": "26% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$140,910 per year (2024)",
+      "industries": [
+        "Research labs",
+        "Technology companies",
+        "Government agencies (e.g., DOE, NASA)"
+      ]
+    }
+  },
+  {
+    "Database Administrator": {
+      "description": "Create or organize systems to store and secure data. Ensure database performance, integrity, and security; implement backups and recovery procedures.",
+      "required_skills": [
+        "SQL",
+        "Database Design",
+        "Data Modeling",
+        "Performance Tuning",
+        "Backup and Recovery"
+      ],
+      "keywords": [
+        "database",
+        "DBMS",
+        "data security",
+        "data warehousing",
+        "Oracle",
+        "MySQL",
+        "SQL Server"
+      ],
+      "typical_education": "Bachelor's degree in computer and information technology or a related field",
+      "job_outlook": "9% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$104,620 per year (2024)",
+      "industries": ["IT services", "Education", "Insurance", "Finance"]
+    }
+  },
+  {
+    "Marketing Manager": {
+      "description": "Plan programs to generate interest in products or services. Coordinate advertising, promotions, and market research to boost sales.",
+      "required_skills": [
+        "Marketing Strategy",
+        "Market Research",
+        "Digital Marketing (SEO/SEM)",
+        "Communication",
+        "Analytical Thinking"
+      ],
+      "keywords": [
+        "marketing",
+        "branding",
+        "campaigns",
+        "advertising",
+        "promotions",
+        "product strategy"
+      ],
+      "typical_education": "Bachelor's degree in marketing or business (experience in related role)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$159,660 per year (2024)",
+      "industries": [
+        "Advertising agencies",
+        "Public relations",
+        "Corporate marketing departments",
+        "Retail"
+      ]
+    }
+  },
+  {
+    "Market Research Analyst": {
+      "description": "Study consumer preferences, business conditions, and other factors to assess potential sales of a product or service. Gather and analyze data from surveys and reports.",
+      "required_skills": [
+        "Statistical Analysis",
+        "Survey Design",
+        "Data Mining",
+        "Excel",
+        "Python or R"
+      ],
+      "keywords": [
+        "market analysis",
+        "consumer behavior",
+        "analytics",
+        "forecasting",
+        "surveys",
+        "market trends"
+      ],
+      "typical_education": "Bachelor's degree in market research, statistics, or a related field",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$76,950 per year (2024)",
+      "industries": [
+        "Market research firms",
+        "Consulting",
+        "Corporations across sectors"
+      ]
+    }
+  },
+  {
+    "Management Analyst": {
+      "description": "Recommend ways to improve an organization's efficiency. Conduct organizational studies and design new systems and procedures.",
+      "required_skills": [
+        "Data Analysis",
+        "Organizational Skills",
+        "Communication",
+        "Consulting",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "management consulting",
+        "efficiency",
+        "process improvement",
+        "operations research",
+        "business strategy"
+      ],
+      "typical_education": "Bachelor's degree in business, management, or related field (often with experience)",
+      "job_outlook": "11% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$101,190 per year (2024)",
+      "industries": ["Consulting firms", "Finance", "Government", "Healthcare"]
+    }
+  },
+  {
+    "Application Developer": {
+      "description": "Design, build, and maintain software applications for various platforms. Collaborate with stakeholders to gather requirements and ensure applications meet user needs.",
+      "required_skills": [
+        "Programming Languages (Java, C#, Python)",
+        "Application Development Frameworks",
+        "Database Management",
+        "Version Control (Git)",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "application development",
+        "software engineering",
+        "user interface",
+        "API integration",
+        "cross-platform development"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$133,080 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Financial services",
+        "Healthcare",
+        "E-commerce"
+      ]
+    }
+  },
+  {
+    "AI Engineer": {
+      "description": "Develop and implement AI tools, systems, and processes to perform tasks without human involvement. Train complex neural networks and machine learning models for real-world applications.",
+      "required_skills": [
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Networks",
+        "Python",
+        "TensorFlow or PyTorch",
+        "Data Engineering"
+      ],
+      "keywords": [
+        "artificial intelligence",
+        "AI",
+        "LLMs",
+        "computer vision",
+        "NLP",
+        "predictive modeling"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related (advanced degree often preferred)",
+      "job_outlook": "Rapidly increasing demand (online job ads for AI Engineers grew ~300% from 2018–2022)",
+      "salary_median": "Not specified",
+      "industries": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Automotive (AI & autonomous vehicles)"
+      ]
+    }
+  },
+  {
+    "Computer Systems Analyst": {
+      "description": "Analyze an organization's computer systems and design solutions to improve efficiency and performance. Evaluate technology needs, implement system upgrades, and ensure that hardware and software meet user requirements and business goals.",
+      "required_skills": [
+        "Systems Analysis",
+        "Database Management",
+        "SQL",
+        "Problem Solving",
+        "Communication",
+        "Project Management"
+      ],
+      "keywords": [
+        "systems integration",
+        "IT consulting",
+        "business analysis",
+        "efficiency",
+        "network optimization",
+        "infrastructure"
+      ],
+      "typical_education": "Bachelor's degree in computer science, information systems, or related field",
+      "job_outlook": "11% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$103,790 per year (2024)",
+      "industries": [
+        "Finance",
+        "Healthcare",
+        "Information technology",
+        "Consulting",
+        "Government"
+      ]
+    }
+  },
+  {
+    "User Experience Designer": {
+      "description": "Design user interfaces and experiences for software and websites, focusing on usability, accessibility, and user satisfaction. Conduct user research, create wireframes and prototypes, and collaborate with developers to implement intuitive designs.",
+      "required_skills": [
+        "User Research",
+        "Wireframing",
+        "Prototyping",
+        "UX/UI Design Tools (e.g., Figma, Sketch)",
+        "Interaction Design",
+        "Communication"
+      ],
+      "keywords": [
+        "user experience",
+        "usability",
+        "human-computer interaction",
+        "information architecture",
+        "user interface",
+        "accessibility"
+      ],
+      "typical_education": "Bachelor's degree in human-computer interaction, design, computer science, or a related field",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$95,380 per year (2024)",
+      "industries": [
+        "Technology",
+        "Software publishing",
+        "E-commerce",
+        "Marketing and advertising",
+        "Entertainment"
+      ]
+    }
+  },
+  {
+    "Game Designer": {
+      "description": "Conceptualize and design game mechanics, storylines, characters, and levels for video games. Work with artists, programmers, and producers to define game features and ensure engaging gameplay experiences.",
+      "required_skills": [
+        "Game Design",
+        "Storytelling",
+        "Level Design",
+        "Prototyping",
+        "Scripting (e.g., Lua, Python)",
+        "Team Collaboration"
+      ],
+      "keywords": [
+        "video games",
+        "gameplay",
+        "mechanics",
+        "narrative design",
+        "Unity",
+        "Unreal Engine"
+      ],
+      "typical_education": "Bachelor's degree in game design, computer science, or a related field",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$99,800 per year (2024)",
+      "industries": [
+        "Video game development",
+        "Software publishing",
+        "Entertainment"
+      ]
+    }
+  },
+  {
+    "Level Designer": {
+      "description": "Design and create levels and environments for video games. Develop gameplay challenges, puzzles, and layouts that fit the overall game design, ensuring levels are engaging and aligned with artistic and narrative goals.",
+      "required_skills": [
+        "Level Design Tools (Unreal/Unity)",
+        "3D Modeling Basics",
+        "Game Mechanics",
+        "Scripting",
+        "Creativity",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "level architecture",
+        "game engines",
+        "3D environments",
+        "puzzles",
+        "player experience",
+        "interactive design"
+      ],
+      "typical_education": "Bachelor's degree in game design, computer graphics, or a related field",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$99,800 per year (2024)",
+      "industries": [
+        "Video game development",
+        "Entertainment",
+        "Software publishing"
+      ]
+    }
+  },
+  {
+    "Game Developer": {
+      "description": "Develop and maintain the software code for video games. Implement game functionality, optimize performance, and work with designers and artists to integrate graphics, physics, and networking features.",
+      "required_skills": [
+        "Programming (C++, C#, Java)",
+        "Game Engines (Unity, Unreal)",
+        "Graphics Programming",
+        "Physics/Mathematics",
+        "Version Control (Git)",
+        "Debugging"
+      ],
+      "keywords": [
+        "game programming",
+        "software development",
+        "game engine",
+        "multiplayer",
+        "cross-platform",
+        "algorithms"
+      ],
+      "typical_education": "Bachelor's degree in computer science, software engineering, or game development",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$131,450 per year (2024)",
+      "industries": [
+        "Video game studios",
+        "Mobile game development",
+        "Simulation and training",
+        "AR/VR development",
+        "Software publishers"
+      ]
+    }
+  },
+  {
+    "Software Developer": {
+      "description": "Design computer applications or programs and coordinate integration and debugging of components. Work with teams to develop software solutions based on user needs.",
+      "required_skills": [
+        "Programming (e.g. Java, Python, C++)",
+        "Software Development Life Cycle",
+        "Version Control (Git)",
+        "Database Management",
+        "Problem Solving",
+        "Unit Testing"
+      ],
+      "keywords": [
+        "software development",
+        "coding",
+        "application design",
+        "debugging",
+        "agile",
+        "DevOps"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$133,080 per year (2024)",
+      "industries": [
+        "Computer systems design",
+        "Manufacturing",
+        "Software publishing"
+      ]
+    }
+  },
+  {
+    "Software Developer": {
+      "description": "Design computer applications or programs and coordinate integration and debugging of components. Work with teams to develop software solutions based on user needs.",
+      "required_skills": [
+        "Programming (e.g. Java, Python, C++)",
+        "Software Development Life Cycle",
+        "Version Control (Git)",
+        "Database Management",
+        "Problem Solving",
+        "Unit Testing"
+      ],
+      "keywords": [
+        "software development",
+        "coding",
+        "application design",
+        "debugging",
+        "agile",
+        "DevOps"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$133,080 per year (2024)",
+      "industries": [
+        "Computer systems design",
+        "Manufacturing",
+        "Software publishing"
+      ]
+    }
+  },
+  {
+    "Web Designer": {
+      "description": "Create visually appealing and user-friendly websites. Focus on layout, color schemes, typography, and overall aesthetics while ensuring functionality and responsiveness.",
+      "required_skills": [
+        "HTML/CSS",
+        "JavaScript",
+        "Responsive Design",
+        "Graphic Design Tools (e.g., Adobe XD, Figma)",
+        "User Experience (UX) Principles",
+        "SEO Basics"
+      ],
+      "keywords": [
+        "web design",
+        "UI/UX",
+        "responsive web design",
+        "graphic design",
+        "front-end development"
+      ],
+      "typical_education": "Bachelor's degree in web design, graphic design, or a related field (or equivalent experience)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$90,930 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Digital marketing agencies",
+        "E-commerce platforms"
+      ]
+    }
+  },
+  {
+    "Software Engineer": {
+      "description": "Design, develop, and maintain software applications and systems. Collaborate with cross-functional teams to create scalable and efficient software solutions.",
+      "required_skills": [
+        "Programming Languages (Java, C++, Python)",
+        "Software Development Life Cycle (SDLC)",
+        "Version Control (Git)",
+        "Problem Solving",
+        "Algorithms and Data Structures",
+        "Testing and Debugging"
+      ],
+      "keywords": [
+        "software engineering",
+        "application development",
+        "system design",
+        "coding",
+        "agile methodologies"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$133,080 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Financial services",
+        "Healthcare technology",
+        "E-commerce"
+      ]
+    }
+  },
+  {
+    "E-Commerce Specialist": {
+      "description": "Manage online sales strategies and platforms to drive e-commerce growth. Analyze market trends, optimize product listings, and enhance customer experience on e-commerce sites.",
+      "required_skills": [
+        "E-Commerce Platforms (Shopify, Magento)",
+        "Digital Marketing",
+        "SEO/SEM",
+        "Data Analysis",
+        "Customer Relationship Management (CRM)",
+        "Content Management Systems (CMS)"
+      ],
+      "keywords": [
+        "e-commerce",
+        "online sales",
+        "digital marketing",
+        "product optimization",
+        "customer engagement"
+      ],
+      "typical_education": "Bachelor's degree in marketing, business, or a related field",
+      "job_outlook": "15% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$75,000 per year (2024)",
+      "industries": [
+        "Retail",
+        "Technology companies",
+        "Digital marketing agencies"
+      ]
+    }
+  },
+  {
+    "UI Engineer": {
+      "description": "Develop user interfaces for web applications, focusing on the look and feel of the application. Ensure that the UI is responsive, accessible, and provides a seamless user experience.",
+      "required_skills": [
+        "HTML/CSS",
+        "JavaScript",
+        "Responsive Design",
+        "Frameworks (React, Angular, Vue.js)",
+        "Cross-Browser Compatibility",
+        "Performance Optimization"
+      ],
+      "keywords": [
+        "user interface development",
+        "front-end engineering",
+        "web applications",
+        "UI frameworks",
+        "responsive design"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field (or equivalent experience)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$90,930 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Digital marketing agencies",
+        "E-commerce platforms"
+      ]
+    }
+  },
+  {
+    "Health Informatics Specialist": {
+      "description": "Manage and analyze health information systems and electronic health records (EHR) to improve patient care and data security. Ensure compliance with healthcare regulations and optimize clinical workflows and data reporting.",
+      "required_skills": [
+        "Electronic Health Record (EHR) systems",
+        "Data Analysis",
+        "Healthcare IT standards (HL7, ICD-10)",
+        "HIPAA and privacy compliance",
+        "SQL/Database Management",
+        "System Implementation"
+      ],
+      "keywords": [
+        "healthcare IT",
+        "clinical data",
+        "electronic medical records",
+        "data security",
+        "health analytics",
+        "informatics"
+      ],
+      "typical_education": "Associate's or Bachelor's degree in health informatics, healthcare management, or information technology",
+      "job_outlook": "16% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$67,310 per year (2024)",
+      "industries": [
+        "Hospitals and clinics",
+        "Health insurance",
+        "Government healthcare",
+        "Healthcare consulting"
+      ]
+    }
+  },
+  {
+    "Nurse Practitioner": {
+      "description": "Provide advanced nursing care including diagnosing conditions, prescribing medications, and managing patient treatment plans. Work independently or collaboratively with physicians in various healthcare settings.",
+      "required_skills": [
+        "Advanced Clinical Assessment",
+        "Pharmacology",
+        "Diagnostic Skills",
+        "Patient Management",
+        "Electronic Health Records",
+        "Evidence-Based Practice"
+      ],
+      "keywords": [
+        "advanced practice nursing",
+        "primary care",
+        "patient diagnosis",
+        "treatment planning",
+        "healthcare provider",
+        "clinical decision making"
+      ],
+      "typical_education": "Master's degree in nursing (MSN) or Doctor of Nursing Practice (DNP)",
+      "job_outlook": "38% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$126,260 per year (2024)",
+      "industries": [
+        "Primary care clinics",
+        "Hospitals",
+        "Specialty practices",
+        "Community health centers"
+      ]
+    }
+  },
+  {
+    "Physician Assistant": {
+      "description": "Practice medicine under physician supervision, conducting examinations, diagnosing illnesses, developing treatment plans, and prescribing medications. Provide comprehensive healthcare services.",
+      "required_skills": [
+        "Clinical Medicine",
+        "Patient Assessment",
+        "Medical Procedures",
+        "Pharmacology",
+        "Medical Decision Making",
+        "Patient Communication"
+      ],
+      "keywords": [
+        "physician assistant",
+        "medical practice",
+        "patient care",
+        "clinical procedures",
+        "healthcare team",
+        "medical diagnosis"
+      ],
+      "typical_education": "Master's degree from an accredited physician assistant program",
+      "job_outlook": "27% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$130,020 per year (2024)",
+      "industries": [
+        "Physician offices",
+        "Hospitals",
+        "Outpatient care centers",
+        "Emergency departments"
+      ]
+    }
+  },
+  {
+    "Medical Coder": {
+      "description": "Assign standardized codes to medical diagnoses and procedures for billing and record-keeping purposes. Ensure accurate documentation and compliance with healthcare regulations.",
+      "required_skills": [
+        "ICD-10 Coding",
+        "CPT Coding",
+        "Medical Terminology",
+        "Anatomy and Physiology",
+        "Healthcare Regulations",
+        "Attention to Detail"
+      ],
+      "keywords": [
+        "medical coding",
+        "healthcare billing",
+        "ICD-10",
+        "CPT codes",
+        "medical records",
+        "healthcare compliance"
+      ],
+      "typical_education": "Certificate or associate's degree in medical coding or health information management",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$48,780 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Physician offices",
+        "Insurance companies",
+        "Medical billing companies"
+      ]
+    }
+  },
+  {
+    "Medical Records Technician": {
+      "description": "Organize and manage health information data, ensuring accuracy, accessibility, and security of patient records. Maintain electronic health record systems and support healthcare operations.",
+      "required_skills": [
+        "Electronic Health Records (EHR)",
+        "Medical Terminology",
+        "Data Management",
+        "HIPAA Compliance",
+        "Database Systems",
+        "Quality Assurance"
+      ],
+      "keywords": [
+        "health information management",
+        "medical records",
+        "EHR systems",
+        "patient data",
+        "healthcare administration",
+        "medical documentation"
+      ],
+      "typical_education": "Associate's degree in health information technology or related field",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$48,780 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Nursing homes",
+        "Physician offices",
+        "Health information companies"
+      ]
+    }
+  },
+  {
+    "Occupational Therapist": {
+      "description": "Help patients develop, recover, and improve skills needed for daily living and working. Design treatment programs to help people with disabilities, injuries, or illnesses achieve independence.",
+      "required_skills": [
+        "Therapeutic Assessment",
+        "Treatment Planning",
+        "Adaptive Equipment",
+        "Patient Education",
+        "Rehabilitation Techniques",
+        "Documentation"
+      ],
+      "keywords": [
+        "occupational therapy",
+        "rehabilitation",
+        "daily living skills",
+        "adaptive techniques",
+        "patient recovery",
+        "functional improvement"
+      ],
+      "typical_education": "Master's degree in occupational therapy",
+      "job_outlook": "12% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$96,370 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Schools",
+        "Rehabilitation centers",
+        "Private practice"
+      ]
+    }
+  },
+  {
+    "Pharmacy Technician": {
+      "description": "Assist pharmacists with dispensing prescription medications, managing inventory, and providing customer service. Help ensure accurate medication preparation and patient safety.",
+      "required_skills": [
+        "Pharmaceutical Knowledge",
+        "Medication Dispensing",
+        "Inventory Management",
+        "Customer Service",
+        "Pharmacy Software",
+        "Safety Protocols"
+      ],
+      "keywords": [
+        "pharmacy operations",
+        "prescription medications",
+        "pharmaceutical care",
+        "medication safety",
+        "patient service",
+        "drug inventory"
+      ],
+      "typical_education": "High school diploma plus on-the-job training or certificate program",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$40,300 per year (2024)",
+      "industries": [
+        "Retail pharmacies",
+        "Hospitals",
+        "Mail-order pharmacies",
+        "Long-term care facilities"
+      ]
+    }
+  },
+  {
+    "Mental Health Counselor": {
+      "description": "Provide therapy and counseling services to individuals, families, and groups dealing with mental health issues, substance abuse, and life challenges. Develop treatment plans and provide ongoing support.",
+      "required_skills": [
+        "Therapeutic Techniques",
+        "Mental Health Assessment",
+        "Counseling Theory",
+        "Crisis Intervention",
+        "Treatment Planning",
+        "Ethical Practice"
+      ],
+      "keywords": [
+        "mental health therapy",
+        "counseling",
+        "psychological support",
+        "behavioral health",
+        "therapy sessions",
+        "mental wellness"
+      ],
+      "typical_education": "Master's degree in counseling, psychology, or related field",
+      "job_outlook": "18% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$56,570 per year (2024)",
+      "industries": [
+        "Mental health centers",
+        "Hospitals",
+        "Private practice",
+        "Community health organizations"
+      ]
+    }
+  },
+  {
+    "Dietitian/Nutritionist": {
+      "description": "Plan and conduct food service or nutritional programs to assist in promotion of health and control of disease. Assess nutritional needs and develop meal plans for individuals and groups.",
+      "required_skills": [
+        "Nutrition Science",
+        "Meal Planning",
+        "Dietary Assessment",
+        "Medical Nutrition Therapy",
+        "Food Safety",
+        "Patient Counseling"
+      ],
+      "keywords": [
+        "nutrition",
+        "dietary planning",
+        "food science",
+        "nutritional counseling",
+        "meal planning",
+        "health promotion"
+      ],
+      "typical_education": "Bachelor's degree in dietetics, food science, or related field",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$69,680 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Schools",
+        "Sports nutrition",
+        "Private practice"
+      ]
+    }
+  },
+  {
+    "Backend Developer": {
+      "description": "Design and maintain server-side applications, databases, and APIs that power web and mobile applications. Focus on server logic, database management, and system architecture.",
+      "required_skills": [
+        "Server-side Programming (Java, Python, Node.js, C#)",
+        "Database Design and Management",
+        "API Development",
+        "System Architecture",
+        "Cloud Services (AWS, Azure, GCP)",
+        "Version Control (Git)"
+      ],
+      "keywords": [
+        "server-side development",
+        "API design",
+        "database management",
+        "microservices",
+        "cloud computing",
+        "system architecture"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$140,470 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Financial services",
+        "E-commerce",
+        "Startups"
+      ]
+    }
+  },
+  {
+    "DevOps Engineer": {
+      "description": "Combine software development and IT operations to streamline deployment processes, manage infrastructure, and ensure reliable system performance through automation and monitoring.",
+      "required_skills": [
+        "Continuous Integration/Continuous Deployment (CI/CD)",
+        "Infrastructure as Code",
+        "Containerization (Docker, Kubernetes)",
+        "Cloud Platforms",
+        "Monitoring and Logging",
+        "Automation Tools"
+      ],
+      "keywords": [
+        "DevOps",
+        "infrastructure automation",
+        "CI/CD pipelines",
+        "containerization",
+        "cloud deployment",
+        "system monitoring"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$145,890 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Cloud service providers",
+        "Financial services",
+        "E-commerce platforms"
+      ]
+    }
+  },
+  {
+    "Database Engineer": {
+      "description": "Design, implement, and maintain complex database systems for high-performance applications. Optimize database performance, ensure data integrity, and manage large-scale data infrastructure.",
+      "required_skills": [
+        "Database Design and Architecture",
+        "SQL and NoSQL Databases",
+        "Performance Tuning",
+        "Data Modeling",
+        "Backup and Recovery",
+        "Database Security"
+      ],
+      "keywords": [
+        "database architecture",
+        "data engineering",
+        "performance optimization",
+        "data warehousing",
+        "big data",
+        "database security"
+      ],
+      "typical_education": "Bachelor's degree in computer science, information systems, or related field",
+      "job_outlook": "9% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$118,750 per year (2024)",
+      "industries": [
+        "Technology companies",
+        "Financial services",
+        "Healthcare",
+        "Data analytics firms"
+      ]
+    }
+  },
+  {
+    "Cloud Architect": {
+      "description": "Design and oversee cloud computing strategies, including cloud adoption plans, cloud application design, and cloud management and monitoring. Lead cloud infrastructure initiatives.",
+      "required_skills": [
+        "Cloud Platforms (AWS, Azure, GCP)",
+        "System Architecture",
+        "Infrastructure Design",
+        "Security Architecture",
+        "Cost Optimization",
+        "Migration Strategies"
+      ],
+      "keywords": [
+        "cloud architecture",
+        "cloud migration",
+        "infrastructure design",
+        "cloud security",
+        "scalable systems",
+        "cloud strategy"
+      ],
+      "typical_education": "Bachelor's degree in computer science or related field, plus cloud certifications",
+      "job_outlook": "17% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$165,750 per year (2024)",
+      "industries": [
+        "Cloud service providers",
+        "Technology consulting",
+        "Financial services",
+        "Healthcare technology"
+      ]
+    }
+  },
+  {
+    "Music Producer": {
+      "description": "Oversee and guide the recording process of musical artists and bands. Manage studio sessions, coordinate musicians, and shape the overall sound and direction of musical projects.",
+      "required_skills": [
+        "Audio Production",
+        "Music Theory",
+        "Digital Audio Workstations (DAWs)",
+        "Mixing and Mastering",
+        "Project Management",
+        "Creative Direction"
+      ],
+      "keywords": [
+        "music production",
+        "recording studio",
+        "audio engineering",
+        "music arrangement",
+        "sound design",
+        "artist development"
+      ],
+      "typical_education": "Bachelor's degree in music production, audio engineering, or related field (experience often more important)",
+      "job_outlook": "5% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$62,750 per year (2024)",
+      "industries": [
+        "Recording studios",
+        "Music labels",
+        "Entertainment companies",
+        "Freelance/Independent"
+      ]
+    }
+  },
+  {
+    "Audio Engineer": {
+      "description": "Operate and maintain recording equipment in studios, live venues, and broadcast facilities. Mix, edit, and master audio recordings for music, film, television, and other media.",
+      "required_skills": [
+        "Audio Equipment Operation",
+        "Digital Audio Workstations",
+        "Mixing and Mastering",
+        "Acoustics Knowledge",
+        "Signal Processing",
+        "Technical Problem Solving"
+      ],
+      "keywords": [
+        "audio engineering",
+        "sound recording",
+        "mixing console",
+        "studio equipment",
+        "live sound",
+        "post-production"
+      ],
+      "typical_education": "Associate's or bachelor's degree in audio engineering or related field",
+      "job_outlook": "5% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$60,500 per year (2024)",
+      "industries": [
+        "Recording studios",
+        "Live music venues",
+        "Broadcasting",
+        "Film and television"
+      ]
+    }
+  },
+  {
+    "Music Therapist": {
+      "description": "Use music interventions to accomplish individualized therapeutic goals for clients with disabilities or illnesses. Assess client needs and implement evidence-based music therapy treatments.",
+      "required_skills": [
+        "Music Performance",
+        "Therapeutic Techniques",
+        "Psychology",
+        "Assessment Skills",
+        "Treatment Planning",
+        "Clinical Documentation"
+      ],
+      "keywords": [
+        "music therapy",
+        "therapeutic intervention",
+        "clinical music",
+        "rehabilitation",
+        "mental health",
+        "healthcare"
+      ],
+      "typical_education": "Bachelor's degree in music therapy from an approved program",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$56,340 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Rehabilitation centers",
+        "Mental health facilities",
+        "Private practice"
+      ]
+    }
+  },
+  {
+    "Music Teacher": {
+      "description": "Teach music theory, performance, and appreciation to students of various ages and skill levels. Develop curriculum, conduct ensembles, and prepare students for performances and competitions.",
+      "required_skills": [
+        "Music Performance",
+        "Music Theory",
+        "Pedagogy",
+        "Classroom Management",
+        "Curriculum Development",
+        "Communication"
+      ],
+      "keywords": [
+        "music education",
+        "instrumental instruction",
+        "choir direction",
+        "music curriculum",
+        "student performance",
+        "music theory"
+      ],
+      "typical_education": "Bachelor's degree in music education or music with teaching certification",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$53,760 per year (2024)",
+      "industries": [
+        "Public schools",
+        "Private schools",
+        "Music conservatories",
+        "Private instruction"
+      ]
+    }
+  },
+  {
+    "Music Composer": {
+      "description": "Create original music for various media including films, television, video games, commercials, and concert performances. Arrange and orchestrate musical compositions for different ensembles.",
+      "required_skills": [
+        "Music Composition",
+        "Music Theory",
+        "Orchestration",
+        "Digital Audio Software",
+        "Creative Writing",
+        "Collaboration"
+      ],
+      "keywords": [
+        "music composition",
+        "film scoring",
+        "orchestration",
+        "musical arrangement",
+        "creative music",
+        "soundtrack"
+      ],
+      "typical_education": "Bachelor's degree in music composition or related field",
+      "job_outlook": "2% growth from 2023 to 2033 (slower than average)",
+      "salary_median": "$62,750 per year (2024)",
+      "industries": [
+        "Film and television",
+        "Video game industry",
+        "Advertising",
+        "Freelance/Independent"
+      ]
+    }
+  },
+  {
+    "Music Director": {
+      "description": "Lead musical organizations such as orchestras, choirs, or bands. Plan concert programs, conduct rehearsals and performances, and manage artistic aspects of musical productions.",
+      "required_skills": [
+        "Conducting",
+        "Music Interpretation",
+        "Leadership",
+        "Program Planning",
+        "Ensemble Management",
+        "Musical Communication"
+      ],
+      "keywords": [
+        "music direction",
+        "conducting",
+        "orchestra management",
+        "concert programming",
+        "musical leadership",
+        "performance direction"
+      ],
+      "typical_education": "Master's degree in music, conducting, or related field",
+      "job_outlook": "2% growth from 2023 to 2033 (slower than average)",
+      "salary_median": "$62,750 per year (2024)",
+      "industries": [
+        "Symphony orchestras",
+        "Opera companies",
+        "Religious organizations",
+        "Educational institutions"
+      ]
+    }
+  },
+  {
+    "Sound Designer": {
+      "description": "Create audio elements for various media including films, television, video games, and theater productions. Design sound effects, ambient audio, and audio landscapes to enhance storytelling.",
+      "required_skills": [
+        "Audio Production",
+        "Sound Effects Creation",
+        "Digital Audio Software",
+        "Field Recording",
+        "Audio Post-Production",
+        "Creative Problem Solving"
+      ],
+      "keywords": [
+        "sound design",
+        "audio effects",
+        "post-production audio",
+        "foley",
+        "ambient sound",
+        "audio storytelling"
+      ],
+      "typical_education": "Bachelor's degree in audio production, film, or related field",
+      "job_outlook": "5% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$73,560 per year (2024)",
+      "industries": [
+        "Film and television",
+        "Video game industry",
+        "Theater",
+        "Advertising"
+      ]
+    }
+  },
+  {
+    "Music Business Manager": {
+      "description": "Handle business affairs for musicians and music organizations. Manage contracts, bookings, marketing strategies, and financial aspects of music careers and organizations.",
+      "required_skills": [
+        "Business Management",
+        "Contract Negotiation",
+        "Marketing",
+        "Financial Management",
+        "Music Industry Knowledge",
+        "Networking"
+      ],
+      "keywords": [
+        "music business",
+        "artist management",
+        "entertainment business",
+        "music marketing",
+        "contract management",
+        "music industry"
+      ],
+      "typical_education": "Bachelor's degree in business, music business, or related field",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$75,420 per year (2024)",
+      "industries": [
+        "Music labels",
+        "Artist management companies",
+        "Entertainment agencies",
+        "Music venues"
+      ]
+    }
+  },
+  {
+    "Biomedical Engineer": {
+      "description": "Design and develop medical devices, equipment, and software that improve patient diagnosis and treatment. Apply engineering principles to healthcare problems, creating solutions like prosthetics, imaging systems, and health management software.",
+      "required_skills": [
+        "Engineering Design",
+        "Biomechanics",
+        "Medical Device Design",
+        "Circuit Design",
+        "CAD Software",
+        "Regulatory Knowledge (FDA/CE)"
+      ],
+      "keywords": [
+        "biomedical",
+        "medical devices",
+        "healthcare technology",
+        "prosthetics",
+        "R&D",
+        "biomechanics"
+      ],
+      "typical_education": "Bachelor's degree in biomedical engineering or a related engineering field (advanced degrees often preferred)",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$106,950 per year (2024)",
+      "industries": [
+        "Medical device manufacturing",
+        "Research laboratories",
+        "Hospitals",
+        "Pharmaceuticals"
+      ]
+    }
+  },
+  {
+    "Clinical Research Coordinator": {
+      "description": "Coordinate and oversee clinical trials and research studies. Ensure compliance with protocols, manage patient recruitment, collect and analyze data, and maintain regulatory documentation.",
+      "required_skills": [
+        "Clinical Trial Management",
+        "Good Clinical Practice (GCP)",
+        "Data Collection and Analysis",
+        "Regulatory Compliance",
+        "Patient Communication",
+        "Medical Terminology"
+      ],
+      "keywords": [
+        "clinical trials",
+        "research studies",
+        "FDA regulations",
+        "patient safety",
+        "data management",
+        "protocol compliance"
+      ],
+      "typical_education": "Bachelor's degree in life sciences, nursing, or related field",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$59,440 per year (2024)",
+      "industries": [
+        "Pharmaceutical companies",
+        "Medical research facilities",
+        "Hospitals",
+        "Contract research organizations (CROs)"
+      ]
+    }
+  },
+  {
+    "Genetic Counselor": {
+      "description": "Assess individual or family risk for genetic disorders and provide information and support to help people make informed decisions about genetic testing and healthcare management.",
+      "required_skills": [
+        "Genetics Knowledge",
+        "Counseling Techniques",
+        "Risk Assessment",
+        "Medical Genetics",
+        "Communication",
+        "Ethical Decision Making"
+      ],
+      "keywords": [
+        "genetic testing",
+        "hereditary diseases",
+        "family history",
+        "genetic risk",
+        "counseling",
+        "genomics"
+      ],
+      "typical_education": "Master's degree in genetic counseling from an accredited program",
+      "job_outlook": "16% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$95,770 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Genetic testing laboratories",
+        "Private practice",
+        "Academic medical centers"
+      ]
+    }
+  },
+  {
+    "Medical Laboratory Technician": {
+      "description": "Perform laboratory tests on blood, tissue, and other body fluids to help diagnose diseases. Operate sophisticated laboratory equipment and analyze test results for healthcare providers.",
+      "required_skills": [
+        "Laboratory Techniques",
+        "Microscopy",
+        "Quality Control",
+        "Medical Equipment Operation",
+        "Data Analysis",
+        "Safety Protocols"
+      ],
+      "keywords": [
+        "medical testing",
+        "laboratory analysis",
+        "blood work",
+        "diagnostics",
+        "lab equipment",
+        "pathology"
+      ],
+      "typical_education": "Associate's degree in medical laboratory technology or related field",
+      "job_outlook": "5% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$60,780 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Diagnostic laboratories",
+        "Physician offices",
+        "Research facilities"
+      ]
+    }
+  },
+  {
+    "Radiologic Technologist": {
+      "description": "Perform diagnostic imaging examinations such as X-rays, CT scans, MRI, and mammograms. Position patients, operate imaging equipment, and ensure image quality for medical diagnosis.",
+      "required_skills": [
+        "Medical Imaging",
+        "Radiation Safety",
+        "Patient Care",
+        "Equipment Operation",
+        "Anatomy Knowledge",
+        "Image Quality Assessment"
+      ],
+      "keywords": [
+        "medical imaging",
+        "X-ray",
+        "CT scan",
+        "MRI",
+        "radiology",
+        "diagnostic imaging"
+      ],
+      "typical_education": "Associate's degree in radiologic technology",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$70,240 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Outpatient imaging centers",
+        "Physician offices",
+        "Emergency departments"
+      ]
+    }
+  },
+  {
+    "Pharmaceutical Scientist": {
+      "description": "Research and develop new medications and drug therapies. Conduct laboratory experiments, analyze drug interactions, and work on formulation development to create safe and effective pharmaceutical products.",
+      "required_skills": [
+        "Drug Development",
+        "Analytical Chemistry",
+        "Pharmacology",
+        "Research Methodology",
+        "Regulatory Knowledge",
+        "Laboratory Skills"
+      ],
+      "keywords": [
+        "drug development",
+        "pharmaceutical research",
+        "clinical trials",
+        "drug safety",
+        "formulation",
+        "pharmacokinetics"
+      ],
+      "typical_education": "Bachelor's degree in chemistry, biology, or pharmaceutical sciences (advanced degrees often preferred)",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$108,680 per year (2024)",
+      "industries": [
+        "Pharmaceutical companies",
+        "Biotechnology firms",
+        "Research institutions",
+        "Government agencies (FDA, NIH)"
+      ]
+    }
+  },
+  {
+    "Medical Device Engineer": {
+      "description": "Design, develop, and test medical devices and equipment. Ensure products meet safety standards and regulatory requirements while solving complex healthcare challenges through innovative engineering solutions.",
+      "required_skills": [
+        "Medical Device Design",
+        "FDA Regulations",
+        "CAD Software",
+        "Biocompatibility Testing",
+        "Risk Management",
+        "Project Management"
+      ],
+      "keywords": [
+        "medical devices",
+        "healthcare technology",
+        "FDA compliance",
+        "device testing",
+        "biomedical engineering",
+        "product development"
+      ],
+      "typical_education": "Bachelor's degree in biomedical engineering, mechanical engineering, or related field",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$106,950 per year (2024)",
+      "industries": [
+        "Medical device manufacturing",
+        "Healthcare technology companies",
+        "Consulting firms",
+        "Research and development"
+      ]
+    }
+  },
+  {
+    "Epidemiologist": {
+      "description": "Study patterns and causes of diseases in populations. Investigate disease outbreaks, analyze health data, and develop strategies for disease prevention and public health policy.",
+      "required_skills": [
+        "Statistical Analysis",
+        "Disease Surveillance",
+        "Data Collection",
+        "Public Health Knowledge",
+        "Research Methods",
+        "Communication"
+      ],
+      "keywords": [
+        "disease prevention",
+        "public health",
+        "outbreak investigation",
+        "health surveillance",
+        "biostatistics",
+        "health policy"
+      ],
+      "typical_education": "Master's degree in epidemiology or public health",
+      "job_outlook": "26% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$81,390 per year (2024)",
+      "industries": [
+        "Government health agencies",
+        "Hospitals",
+        "Research institutions",
+        "Pharmaceutical companies"
+      ]
+    }
+  },
+  {
+    "Biotechnology Research Scientist": {
+      "description": "Conduct research using living organisms or biological systems to develop new products and technologies. Work on projects ranging from drug discovery to agricultural improvements and environmental solutions.",
+      "required_skills": [
+        "Molecular Biology",
+        "Cell Culture",
+        "Genetic Engineering",
+        "Laboratory Techniques",
+        "Data Analysis",
+        "Research Design"
+      ],
+      "keywords": [
+        "biotechnology",
+        "genetic engineering",
+        "molecular biology",
+        "cell culture",
+        "biopharmaceuticals",
+        "R&D"
+      ],
+      "typical_education": "Bachelor's degree in biology, biochemistry, or related field (advanced degrees often preferred)",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$108,680 per year (2024)",
+      "industries": [
+        "Biotechnology companies",
+        "Pharmaceutical companies",
+        "Research institutions",
+        "Government laboratories"
+      ]
+    }
+  },
+  {
+    "Medical Science Liaison": {
+      "description": "Serve as scientific experts and communicate complex medical information between pharmaceutical companies and healthcare professionals. Provide clinical and scientific support for medical products.",
+      "required_skills": [
+        "Medical Knowledge",
+        "Scientific Communication",
+        "Relationship Building",
+        "Clinical Research",
+        "Presentation Skills",
+        "Regulatory Knowledge"
+      ],
+      "keywords": [
+        "medical affairs",
+        "scientific communication",
+        "clinical support",
+        "healthcare professionals",
+        "medical education",
+        "pharmaceutical"
+      ],
+      "typical_education": "Advanced degree in medicine, pharmacy, or life sciences (PharmD, MD, PhD)",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$156,000 per year (2024)",
+      "industries": [
+        "Pharmaceutical companies",
+        "Biotechnology firms",
+        "Medical device companies",
+        "Contract research organizations"
+      ]
+    }
+  },
+  {
+    "Surgical Technologist": {
+      "description": "Assist in surgical operations by preparing operating rooms, arranging equipment, and helping doctors and nurses during surgeries. Ensure sterile conditions and anticipate the needs of surgical teams.",
+      "required_skills": [
+        "Surgical Instruments Knowledge",
+        "Sterile Technique",
+        "Anatomy and Physiology",
+        "Medical Terminology",
+        "Patient Safety",
+        "Team Collaboration"
+      ],
+      "keywords": [
+        "operating room",
+        "surgical procedures",
+        "sterile environment",
+        "medical equipment",
+        "patient care",
+        "surgery support"
+      ],
+      "typical_education": "Certificate or associate's degree in surgical technology",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$60,370 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Outpatient surgery centers",
+        "Physician offices",
+        "Emergency departments"
+      ]
+    }
+  },
+  {
+    "Medical Physicist": {
+      "description": "Apply physics principles to healthcare, particularly in radiation therapy, diagnostic imaging, and nuclear medicine. Ensure safe and effective use of radiation in medical procedures.",
+      "required_skills": [
+        "Radiation Physics",
+        "Medical Imaging Physics",
+        "Dosimetry",
+        "Quality Assurance",
+        "Radiation Safety",
+        "Computer Programming"
+      ],
+      "keywords": [
+        "radiation therapy",
+        "medical imaging",
+        "radiation safety",
+        "dosimetry",
+        "nuclear medicine",
+        "treatment planning"
+      ],
+      "typical_education": "Master's degree in medical physics or related field",
+      "job_outlook": "7% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$142,960 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Cancer treatment centers",
+        "Research institutions",
+        "Medical device companies"
+      ]
+    }
+  },
+  {
+    "Respiratory Therapist": {
+      "description": "Care for patients with breathing disorders by administering treatments, managing ventilators, and educating patients about respiratory health. Work with patients of all ages with conditions like asthma, COPD, and pneumonia.",
+      "required_skills": [
+        "Respiratory Care",
+        "Ventilator Management",
+        "Patient Assessment",
+        "Medical Equipment Operation",
+        "Emergency Response",
+        "Patient Education"
+      ],
+      "keywords": [
+        "respiratory care",
+        "ventilators",
+        "breathing treatments",
+        "pulmonary function",
+        "critical care",
+        "patient therapy"
+      ],
+      "typical_education": "Associate's degree in respiratory therapy",
+      "job_outlook": "13% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$70,540 per year (2024)",
+      "industries": [
+        "Hospitals",
+        "Nursing homes",
+        "Home healthcare",
+        "Sleep disorder centers"
+      ]
+    }
+  },
+  {
+    "Physical Therapist": {
+      "description": "Help patients recover from injuries and improve mobility through exercises, manual therapy, and specialized treatments. Develop treatment plans to restore function and prevent future injuries.",
+      "required_skills": [
+        "Therapeutic Exercise",
+        "Manual Therapy",
+        "Patient Assessment",
+        "Treatment Planning",
+        "Anatomy and Physiology",
+        "Communication"
+      ],
+      "keywords": [
+        "rehabilitation",
+        "physical therapy",
+        "mobility",
+        "injury recovery",
+        "therapeutic exercise",
+        "patient care"
+      ],
+      "typical_education": "Doctor of Physical Therapy (DPT) degree",
+      "job_outlook": "15% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$97,960 per year (2024)",
+      "industries": [
+        "Private practice",
+        "Hospitals",
+        "Outpatient clinics",
+        "Sports medicine facilities"
+      ]
+    }
+  },
+  {
+    "Medical Writer": {
+      "description": "Create scientific and medical documents including research papers, regulatory submissions, clinical study reports, and educational materials. Translate complex medical information for various audiences.",
+      "required_skills": [
+        "Scientific Writing",
+        "Medical Knowledge",
+        "Regulatory Writing",
+        "Research Methods",
+        "Editing and Proofreading",
+        "Project Management"
+      ],
+      "keywords": [
+        "medical writing",
+        "scientific documentation",
+        "regulatory submissions",
+        "clinical trials",
+        "medical communications",
+        "healthcare content"
+      ],
+      "typical_education": "Bachelor's degree in life sciences, medicine, or related field (advanced degrees often preferred)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$78,060 per year (2024)",
+      "industries": [
+        "Pharmaceutical companies",
+        "Medical communications agencies",
+        "Contract research organizations",
+        "Medical device companies"
+      ]
+    }
+  },
+  {
+    "Game Producer": {
+      "description": "Oversee the development of video games from concept to completion. Manage project timelines, budgets, and team coordination while ensuring games meet quality standards and market requirements.",
+      "required_skills": [
+        "Project Management",
+        "Team Leadership",
+        "Budget Management",
+        "Game Development Process",
+        "Communication",
+        "Risk Management"
+      ],
+      "keywords": [
+        "game production",
+        "project management",
+        "team coordination",
+        "game development lifecycle",
+        "budget planning",
+        "quality assurance"
+      ],
+      "typical_education": "Bachelor's degree in game development, business, or related field",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$115,220 per year (2024)",
+      "industries": [
+        "Video game studios",
+        "Mobile game companies",
+        "Entertainment companies",
+        "Software publishers"
+      ]
+    }
+  },
+  {
+    "Game Artist": {
+      "description": "Create visual elements for video games including characters, environments, textures, and animations. Work with art directors and designers to establish the visual style and aesthetic of games.",
+      "required_skills": [
+        "Digital Art",
+        "3D Modeling",
+        "Texture Creation",
+        "Animation",
+        "Art Software (Maya, Blender, Photoshop)",
+        "Concept Art"
+      ],
+      "keywords": [
+        "game art",
+        "3D modeling",
+        "character design",
+        "environment art",
+        "digital illustration",
+        "visual development"
+      ],
+      "typical_education": "Bachelor's degree in art, game design, or related field",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$78,790 per year (2024)",
+      "industries": [
+        "Video game development",
+        "Animation studios",
+        "Entertainment companies",
+        "Freelance/Contract work"
+      ]
+    }
+  },
+  {
+    "Game Audio Designer": {
+      "description": "Create and implement sound effects, music, and audio elements for video games. Design immersive audio experiences that enhance gameplay and support the game's narrative and atmosphere.",
+      "required_skills": [
+        "Audio Production",
+        "Sound Design",
+        "Music Composition",
+        "Audio Software (Pro Tools, Wwise, FMOD)",
+        "Game Engine Integration",
+        "Creative Collaboration"
+      ],
+      "keywords": [
+        "game audio",
+        "sound design",
+        "music composition",
+        "audio implementation",
+        "interactive audio",
+        "sound effects"
+      ],
+      "typical_education": "Bachelor's degree in audio production, music, or related field",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$73,560 per year (2024)",
+      "industries": [
+        "Video game studios",
+        "Audio production companies",
+        "Entertainment industry",
+        "Freelance/Contract work"
+      ]
+    }
+  },
+  {
+    "Game Quality Assurance Tester": {
+      "description": "Test video games to identify bugs, glitches, and gameplay issues before release. Document problems, verify fixes, and ensure games meet quality standards and provide good user experience.",
+      "required_skills": [
+        "Testing Methodologies",
+        "Bug Reporting",
+        "Attention to Detail",
+        "Game Analysis",
+        "Communication",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "game testing",
+        "quality assurance",
+        "bug detection",
+        "gameplay testing",
+        "user experience",
+        "software testing"
+      ],
+      "typical_education": "High school diploma to bachelor's degree (game development or related field preferred)",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$49,180 per year (2024)",
+      "industries": [
+        "Video game development",
+        "Software testing companies",
+        "Entertainment companies",
+        "Mobile game studios"
+      ]
+    }
+  },
+  {
+    "Technical Game Designer": {
+      "description": "Bridge the gap between game design and programming by implementing game systems, balancing mechanics, and creating tools for other developers. Focus on the technical aspects of game design.",
+      "required_skills": [
+        "Game Design",
+        "Scripting (Lua, Python, C#)",
+        "Game Engines (Unity, Unreal)",
+        "Systems Design",
+        "Data Analysis",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "technical design",
+        "game systems",
+        "game balance",
+        "scripting",
+        "gameplay programming",
+        "design tools"
+      ],
+      "typical_education": "Bachelor's degree in computer science, game design, or related field",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$102,570 per year (2024)",
+      "industries": [
+        "Video game development",
+        "Mobile game studios",
+        "Entertainment companies",
+        "Indie game development"
+      ]
+    }
+  },
+  {
+    "Esports Manager": {
+      "description": "Manage professional gaming teams and players in competitive esports. Handle team operations, sponsorship deals, tournament participation, and player development in the growing esports industry.",
+      "required_skills": [
+        "Team Management",
+        "Business Development",
+        "Marketing",
+        "Event Planning",
+        "Contract Negotiation",
+        "Gaming Industry Knowledge"
+      ],
+      "keywords": [
+        "esports",
+        "competitive gaming",
+        "team management",
+        "tournament organization",
+        "gaming industry",
+        "player development"
+      ],
+      "typical_education": "Bachelor's degree in business, sports management, or related field",
+      "job_outlook": "Rapidly growing field (esports industry expected to exceed $1.8 billion by 2025)",
+      "salary_median": "$75,000-$120,000 per year (2024, varies widely)",
+      "industries": [
+        "Esports organizations",
+        "Gaming companies",
+        "Entertainment companies",
+        "Sports management firms"
+      ]
+    }
+  },
+  {
+    "Game Community Manager": {
+      "description": "Engage with gaming communities to build relationships, gather feedback, and promote games. Manage social media, forums, and events to foster a positive community around games.",
+      "required_skills": [
+        "Community Engagement",
+        "Social Media Management",
+        "Content Creation",
+        "Customer Service",
+        "Event Planning",
+        "Communication"
+      ],
+      "keywords": [
+        "community management",
+        "gaming community",
+        "social media",
+        "player engagement",
+        "content creation",
+        "event organization"
+      ],
+      "typical_education": "Bachelor's degree in communications, marketing, or related field (experience in gaming preferred)",
+      "job_outlook": "4% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$60,000-$90,000 per year (2024, varies widely)",
+      "industries": [
+        "Video game companies",
+        "Esports organizations",
+        "Gaming communities",
+        "Social media agencies"
+      ]
+    }
+  },
+  {
+    "Content Writer": {
+      "description": "Create engaging and informative content for websites, blogs, social media, and other digital platforms. Research topics, write articles, and optimize content for search engines.",
+      "required_skills": [
+        "Writing Skills",
+        "Research Skills",
+        "SEO Knowledge",
+        "Creativity",
+        "Time Management",
+        "Attention to Detail"
+      ],
+      "keywords": [
+        "content writing",
+        "blogging",
+        "SEO content",
+        "digital marketing",
+        "copywriting",
+        "online content"
+      ],
+      "typical_education": "Bachelor's degree in English, journalism, communications, or related field (experience in writing preferred)",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$60,000 per year (2024)",
+      "industries": [
+        "Digital marketing agencies",
+        "Media companies",
+        "Freelance/Independent",
+        "Corporate sectors"
+      ]
+    }
+  },
+  {
+    "Content Moderator": {
+      "description": "Review and moderate user-generated content on platforms to ensure compliance with community guidelines and policies. Identify and remove inappropriate content, respond to user reports, and maintain a safe online environment.",
+      "required_skills": [
+        "Attention to Detail",
+        "Critical Thinking",
+        "Communication",
+        "Problem Solving",
+        "Cultural Sensitivity",
+        "Time Management"
+      ],
+      "keywords": [
+        "content moderation",
+        "community guidelines",
+        "user-generated content",
+        "online safety",
+        "report handling",
+        "digital content"
+      ],
+      "typical_education": "High school diploma or equivalent; some positions may require an associate's degree or relevant experience in digital media",
+      "job_outlook": "5% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$45,000 per year (2024)",
+      "industries": [
+        "Social media platforms",
+        "Online communities",
+        "Gaming companies",
+        "Content creation platforms"
+      ]
+    }
+  },
+  {
+    "Executive Assistant": {
+      "description": "Provide high-level administrative support to executives and senior management. Responsibilities include managing schedules, coordinating meetings, preparing reports, and handling confidential information.",
+      "required_skills": [
+        "Organizational Skills",
+        "Time Management",
+        "Communication",
+        "Problem Solving",
+        "Discretion",
+        "Tech Savvy"
+      ],
+      "keywords": [
+        "executive assistant",
+        "administrative support",
+        "schedule management",
+        "meeting coordination",
+        "confidentiality",
+        "corporate administration"
+      ],
+      "typical_education": "Associate's degree or bachelor's degree in business administration or related field; experience in administrative roles preferred",
+      "job_outlook": "6% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$65,000 per year (2024)",
+      "industries": [
+        "Corporate sectors",
+        "Non-profit organizations",
+        "Government agencies",
+        "Healthcare organizations"
+      ]
+    }
+  },
+  {
+    "Personal Assistant": {
+      "description": "Assist individuals with personal tasks such as scheduling appointments, managing household tasks, running errands, and providing general support to improve their daily lives.",
+      "required_skills": [
+        "Time Management",
+        "Organizational Skills",
+        "Communication",
+        "Problem Solving",
+        "Discretion",
+        "Customer Service"
+      ],
+      "keywords": [
+        "personal assistant",
+        "household management",
+        "errand running",
+        "schedule management",
+        "personal support",
+        "client relations"
+      ],
+      "typical_education": "High school diploma or equivalent; experience in personal assistance or related fields preferred",
+      "job_outlook": "8% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$50,000 per year (2024)",
+      "industries": [
+        "Private households",
+        "Freelance/Independent",
+        "Corporate sectors",
+        "Entertainment industry"
+      ]
+    }
+  },
+  {
+    "Administrative Assistant": {
+      "description": "Provide administrative support to ensure efficient operation of the office. Responsibilities include managing files, scheduling appointments, handling correspondence, and assisting with various administrative tasks.",
+      "required_skills": [
+        "Organizational Skills",
+        "Time Management",
+        "Communication",
+        "Tech Savvy",
+        "Customer Service",
+        "Problem Solving"
+      ],
+      "keywords": [
+        "administrative assistant",
+        "office support",
+        "scheduling",
+        "file management",
+        "customer service",
+        "office administration"
+      ],
+      "typical_education": "High school diploma or equivalent; some positions may require an associate's degree or specialized training in office administration",
+      "job_outlook": "5% growth from 2023 to 2033 (about as fast as average)",
+      "salary_median": "$50,000 per year (2024)",
+      "industries": [
+        "Corporate sectors",
+        "Non-profit organizations",
+        "Government agencies",
+        "Healthcare organizations"
+      ]
+    }
+  },
+  {
+    "Business Consultant": {
+      "description": "Provide expert advice to businesses to improve their performance, efficiency, and profitability. Analyze business problems, develop strategies, and implement solutions across various industries.",
+      "required_skills": [
+        "Analytical Skills",
+        "Problem Solving",
+        "Communication",
+        "Project Management",
+        "Industry Knowledge",
+        "Strategic Planning"
+      ],
+      "keywords": [
+        "business consulting",
+        "strategy development",
+        "process improvement",
+        "organizational change",
+        "performance enhancement",
+        "business analysis"
+      ],
+      "typical_education": "Bachelor's degree in business administration, management, or related field (advanced degrees often preferred)",
+      "job_outlook": "11% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$90,000 per year (2024)",
+      "industries": [
+        "Consulting firms",
+        "Corporate sectors",
+        "Non-profit organizations",
+        "Government agencies"
+      ]
+    }
+  },
+  {
+    "Financial Analyst": {
+      "description": "Guide businesses and individuals in decisions about expending money to attain profit. Assess performance of stocks, bonds, and other investments.",
+      "required_skills": [
+        "Financial Modeling",
+        "Data Analysis",
+        "Excel",
+        "Risk Assessment",
+        "Economics"
+      ],
+      "keywords": [
+        "finance",
+        "investments",
+        "portfolio",
+        "valuation",
+        "budgeting",
+        "risk management"
+      ],
+      "typical_education": "Bachelor's degree in finance, economics, or a related field",
+      "job_outlook": "9% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$101,910 per year (2024)",
+      "industries": [
+        "Banks",
+        "Pension funds",
+        "Insurance companies",
+        "Corporations"
+      ]
+    }
+  },
+  {
+    "Financial Consultant": {
+      "description": "Advise individuals or businesses on financial planning, investment strategies, and risk management. Help clients achieve their financial goals through tailored financial solutions.",
+      "required_skills": [
+        "Financial Analysis",
+        "Investment Strategies",
+        "Risk Management",
+        "Client Relationship Management",
+        "Regulatory Knowledge",
+        "Communication"
+      ],
+      "keywords": [
+        "financial consulting",
+        "investment advice",
+        "wealth management",
+        "financial planning",
+        "risk assessment",
+        "portfolio management"
+      ],
+      "typical_education": "Bachelor's degree in finance, accounting, or related field (certifications like CFA or CFP often preferred)",
+      "job_outlook": "15% growth from 2023 to 2033 (much faster than average)",
+      "salary_median": "$95,000 per year (2024)",
+      "industries": [
+        "Financial services firms",
+        "Investment banks",
+        "Wealth management companies",
+        "Independent consulting"
+      ]
+    }
+  },
+  {
+    "Marketing Consultant": {
+      "description": "Help businesses develop and implement effective marketing strategies to reach their target audience. Analyze market trends, create marketing campaigns, and measure their effectiveness.",
+      "required_skills": [
+        "Market Research",
+        "Digital Marketing",
+        "Brand Strategy",
+        "Content Creation",
+        "Data Analysis",
+        "Communication"
+      ],
+      "keywords": [
+        "marketing consulting",
+        "digital marketing",
+        "brand development",
+        "content strategy",
+        "market analysis",
+        "campaign management"
+      ],
+      "typical_education": "Bachelor's degree in marketing, business, or related field (experience in marketing preferred)",
+      "job_outlook": "10% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$85,000 per year (2024)",
+      "industries": [
+        "Marketing agencies",
+        "Corporate sectors",
+        "Non-profit organizations",
+        "Freelance/Independent"
+      ]
+    }
+  },
+  {
+    "Human Resources Consultant": {
+      "description": "Advise organizations on human resources practices, policies, and strategies. Help improve employee relations, recruitment processes, and overall HR management to enhance organizational performance.",
+      "required_skills": [
+        "HR Management",
+        "Recruitment Strategies",
+        "Employee Relations",
+        "Performance Management",
+        "Compliance Knowledge",
+        "Communication"
+      ],
+      "keywords": [
+        "HR consulting",
+        "talent acquisition",
+        "employee engagement",
+        "organizational development",
+        "HR policies",
+        "workforce planning"
+      ],
+      "typical_education": "Bachelor's degree in human resources, business administration, or related field (certifications like SHRM-CP or PHR often preferred)",
+      "job_outlook": "9% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$80,000 per year (2024)",
+      "industries": [
+        "Consulting firms",
+        "Corporate sectors",
+        "Non-profit organizations",
+        "Government agencies"
+      ]
+    }
+  },
+  {
+    "IT Consultant": {
+      "description": "Provide expertise in information technology to help businesses improve their IT systems, enhance cybersecurity, and implement new technologies. Analyze IT infrastructure and recommend solutions to optimize performance.",
+      "required_skills": [
+        "IT Infrastructure",
+        "Cybersecurity",
+        "Network Management",
+        "Cloud Computing",
+        "Problem Solving",
+        "Project Management"
+      ],
+      "keywords": [
+        "IT consulting",
+        "cybersecurity",
+        "network solutions",
+        "cloud services",
+        "technology implementation",
+        "system optimization"
+      ],
+      "typical_education": "Bachelor's degree in computer science, information technology, or related field (certifications like CISSP or CCNA often preferred)",
+      "job_outlook": "10% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$95,000 per year (2024)",
+      "industries": [
+        "IT consulting firms",
+        "Corporate sectors",
+        "Technology companies",
+        "Freelance/Independent"
+      ]
+    }
+  },
+  {
+    "Operations Consultant": {
+      "description": "Analyze and improve business operations to enhance efficiency, reduce costs, and increase productivity. Work with organizations to streamline processes and implement best practices.",
+      "required_skills": [
+        "Process Improvement",
+        "Data Analysis",
+        "Project Management",
+        "Change Management",
+        "Problem Solving",
+        "Communication"
+      ],
+      "keywords": [
+        "operations consulting",
+        "process optimization",
+        "efficiency improvement",
+        "cost reduction",
+        "business analysis",
+        "performance enhancement"
+      ],
+      "typical_education": "Bachelor's degree in business administration, management, or related field (experience in operations preferred)",
+      "job_outlook": "11% growth from 2023 to 2033 (faster than average)",
+      "salary_median": "$90,000 per year (2024)",
+      "industries": [
+        "Consulting firms",
+        "Corporate sectors",
+        "Manufacturing companies",
+        "Logistics and supply chain"
+      ]
+    }
+  }
+]

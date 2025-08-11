@@ -1,7 +1,8 @@
 @echo off
 
-echo cd "D:\Web Development\Projects\Jobify\backend" > "%TEMP%\run_node.ps1"
-echo node server.js >> "%TEMP%\run_node.ps1"
+echo cd "D:\Software Development\Projects\Jobify\backend" > "%TEMP%\run_node.ps1"
+echo .\venv\Scripts\Activate.ps1 >> "%TEMP%\run_node.ps1"
+echo python server.py >> "%TEMP%\run_node.ps1"
 
 wt ^
   --title "Jobify Server" ^

@@ -1,0 +1,226 @@
+
+================================================================================
+THESIS DOCUMENTATION - TEXT TO EMBEDDING CONVERSION
+Timestamp: 2025-08-12T05:05:37.523036
+================================================================================
+
+1. TEXT PREPROCESSING AND ENHANCEMENT:
+--------------------------------------------------
+ORIGINAL TEXT (1392 characters):
+{
+  "name": "Priya Sharma",
+  "education": [
+    {
+      "school": "Carnegie Mellon University",
+      "degree": "master's",
+      "major": "Artificial Intelligence",
+      "gpa": "3.9"
+    },
+    {
+      "school": "IIT Delhi",
+      "degree": "bachelor's",
+      "major": "Computer Science",
+      "gpa": "3.7"
+    }
+  ],
+  "thesisAbstract": "Deep reinforcement learning applications in autonomous systems and robotics control mechanisms.",
+  "experience": [
+    {
+      "title": "AI Engineer",
+      "description": "Developed and deployed machine learning models for computer vision and NLP applications, serving 5M+ users daily."
+    },
+    {
+      "title": "Machine Learning Intern",
+      "description": "Built recommendation systems and chatbots using TensorFlow and PyTorch for fintech startup...
+
+ENHANCED TEXT (1635 characters):
+{
+  "name": "Priya Sharma",
+  "education": [
+    {
+      "school": "Carnegie Mellon University",
+      "degree": "master's",
+      "major": "Artificial Intelligence",
+      "gpa": "3.9"
+    },
+    {
+      "school": "IIT Delhi",
+      "degree": "bachelor's",
+      "major": "Computer Science",
+      "gpa": "3.7"
+    }
+  ],
+  "thesisAbstract": "Deep reinforcement learning applications in autonomous systems and robotics control mechanisms.",
+  "experience": [
+    {
+      "title": "AI Engineer",
+      "description": "Developed and deployed machine learning models for computer vision and NLP applications, serving 5M+ users daily."
+    },
+    {
+      "title": "Machine Learning Intern",
+      "description": "Built recommendation systems and chatbots using TensorFlow and PyTorch for fintech startup."
+    }
+  ],
+  "projects": [
+    {
+      "title": "Autonomous Drone Navigation",
+      "description": "Created deep Q-learning model for drone navigation in complex environments, achieving 95% success rate."
+    },
+    {
+      "title": "Medical Image Analysis",
+      "description": "Developed CNN model for medical imaging diagnosis, improving accuracy by 20% over existing solutions."
+    }
+  ],
+ ...
+
+2. FEATURE EXTRACTION RESULTS:
+--------------------------------------------------
+Skills Extracted (5): ['machine learning', 'r', 'deep learning', 'neural networks', 'medical imaging']
+Job Keywords (18): ['lan', 'user', 'medical imaging', 'it', 'systems', 'network', 'computer vision', 'computer', 'nlp', 'e', 'ui', 'application', 'medical', 'science', 'artificial intelligence']
+Industry Keywords (7): ['work', 'computer', 'autonomous', 'education', 'medical', 'systems', 'imaging']
+
+3. EMBEDDING VECTOR REPRESENTATION:
+--------------------------------------------------
+Model Used: SentenceTransformer
+Embedding Dimension: 768
+Vector Type: <class 'numpy.ndarray'>
+Vector Shape: (768,)
+
+4. EMBEDDING VECTOR SAMPLE (First 50 dimensions):
+--------------------------------------------------
+Dims  0- 9: [0.054892, -0.026975, 0.029953, -0.030290, 0.049536, 0.000043, 0.001778, -0.014543, 0.030940, 0.065686]
+Dims 10-19: [-0.036186, -0.067208, -0.026283, -0.015680, -0.002136, -0.023103, 0.019992, 0.014789, 0.001283, 0.005346]
+Dims 20-29: [0.095259, 0.009505, -0.076111, -0.015217, 0.038078, -0.001985, 0.021893, -0.038337, 0.021334, 0.043269]
+Dims 30-39: [0.022870, -0.042825, 0.044482, 0.014814, 0.005506, -0.011894, -0.030185, -0.006843, 0.038574, -0.025175]
+Dims 40-49: [-0.012618, 0.037824, 0.021942, 0.019211, -0.017291, -0.049364, -0.035732, -0.024136, -0.002394, -0.029714]
+
+5. EMBEDDING STATISTICAL ANALYSIS:
+--------------------------------------------------
+Mean: 0.000127
+Std:  0.036084
+Min:  -0.099776
+Max:  0.114969
+L2 Norm: 1.000000
+
+6. EMBEDDING VALUE DISTRIBUTION:
+--------------------------------------------------
+[-0.100 to -0.078]:   9 ██
+[-0.078 to -0.057]:  35 ████████
+[-0.057 to -0.035]:  71 █████████████████
+[-0.035 to -0.014]: 150 █████████████████████████████████████
+[-0.014 to  0.008]: 199 ██████████████████████████████████████████████████
+[ 0.008 to  0.029]: 143 ███████████████████████████████████
+[ 0.029 to  0.051]:  87 █████████████████████
+[ 0.051 to  0.072]:  59 ██████████████
+[ 0.072 to  0.093]:  11 ██
+[ 0.093 to  0.115]:   4 █
+
+7. TEXT ENHANCEMENT BREAKDOWN:
+--------------------------------------------------
+Original Text: 1 chars
+  Content: {
+  "name": 25 chars
+  Content: "name": "Priya Sharma",
+  "education": 16 chars
+  Content: "education": [
+Component 3: 5 chars
+  Content: {
+      "school": 45 chars
+  Content: "school": "Carnegie Mellon University",
+      "degree": 27 chars
+  Content: "degree": "master's",
+      "major": 41 chars
+  Content: "major": "Artificial Intelligence",
+      "gpa": 18 chars
+  Content: "gpa": "3.9"
+Component 8: 6 chars
+  Content: },
+Component 9: 5 chars
+  Content: {
+      "school": 28 chars
+  Content: "school": "IIT Delhi",
+      "degree": 29 chars
+  Content: "degree": "bachelor's",
+      "major": 34 chars
+  Content: "major": "Computer Science",
+      "gpa": 18 chars
+  Content: "gpa": "3.7"
+Component 14: 5 chars
+  Content: }
+Component 15: 4 chars
+  Content: ],
+  "thesisAbstract": 118 chars
+  Content: "thesisAbstract": "Deep reinforcement learning applications in autonomous systems and robotics control mechanisms.",
+  "experience": 17 chars
+  Content: "experience": [
+Component 18: 5 chars
+  Content: {
+      "title": 29 chars
+  Content: "title": "AI Engineer",
+      "description": 136 chars
+  Content: "description": "Developed and deployed machine learning models for computer vision and NLP applications, serving 5M+ users daily."
+Component 21: 6 chars
+  Content: },
+Component 22: 5 chars
+  Content: {
+      "title": 41 chars
+  Content: "title": "Machine Learning Intern",
+      "description": 114 chars
+  Content: "description": "Built recommendation systems and chatbots using TensorFlow and PyTorch for fintech startup."
+Component 25: 5 chars
+  Content: }
+Component 26: 4 chars
+  Content: ],
+  "projects": 15 chars
+  Content: "projects": [
+Component 28: 5 chars
+  Content: {
+      "title": 45 chars
+  Content: "title": "Autonomous Drone Navigation",
+      "description": 126 chars
+  Content: "description": "Created deep Q-learning model for drone navigation in complex environments, achieving 95% success rate."
+Component 31: 6 chars
+  Content: },
+Component 32: 5 chars
+  Content: {
+      "title": 40 chars
+  Content: "title": "Medical Image Analysis",
+      "description": 124 chars
+  Content: "description": "Developed CNN model for medical imaging diagnosis, improving accuracy by 20% over existing solutions."
+Component 35: 5 chars
+  Content: }
+Component 36: 4 chars
+  Content: ],
+  "additional": 17 chars
+  Content: "additional": {
+    "languages": 18 chars
+  Content: "languages": [
+Component 39: 16 chars
+  Content: "English",
+Component 40: 14 chars
+  Content: "Hindi",
+Component 41: 13 chars
+  Content: "Tamil"
+Component 42: 6 chars
+  Content: ],
+    "softSkills": 19 chars
+  Content: "softSkills": [
+Component 44: 22 chars
+  Content: "Deep Learning",
+Component 45: 24 chars
+  Content: "Computer Vision",
+Component 46: 23 chars
+  Content: "Neural Networks"
+Component 47: 5 chars
+  Content: ]
+Component 48: 3 chars
+  Content: }
+Component 49: 1 chars
+  Content: }
+Identified Skills: 87 chars
+  Content: Identified Skills: machine learning, r, deep learning, neural networks, medical imaging
+Job Keywords: 89 chars
+  Content: Job Keywords: lan, user, medical imaging, it, systems, network, computer vision, computer
+Industry Context: 64 chars
+  Content: Industry Context: work, computer, autonomous, education, medical
+

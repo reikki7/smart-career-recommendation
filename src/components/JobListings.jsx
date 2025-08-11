@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, X, Briefcase } from "lucide-react";
+import { ChevronRight, X, Briefcase, MapPin } from "lucide-react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import linkedinIcon from "../assets/Linkedin_icon.svg";
+import { useState } from "react";
 
 dayjs.extend(relativeTime);
 
@@ -12,7 +13,36 @@ function JobListings({
   setSelectedCareerPath,
   isMobile,
   onClose,
+  onLocationChange,
+  selectedLocation,
+  setSelectedLocation,
 }) {
+  // Location options
+  const locationOptions = [
+    { value: "Australia", label: "Australia" },
+    { value: "Canada", label: "Canada" },
+    { value: "Germany", label: "Germany" },
+    { value: "India", label: "India" },
+    { value: "Indonesia", label: "Indonesia" },
+    { value: "Italy", label: "Italy" },
+    { value: "Japan", label: "Japan" },
+    { value: "Malaysia", label: "Malaysia" },
+    { value: "Netherlands", label: "Netherlands" },
+    { value: "Philippines", label: "Philippines" },
+    { value: "Singapore", label: "Singapore" },
+    { value: "South Korea", label: "South Korea" },
+    { value: "Thailand", label: "Thailand" },
+    { value: "United Kingdom", label: "United Kingdom" },
+    { value: "United States", label: "United States" },
+  ];
+
+  const handleLocationChange = (newLocation) => {
+    setSelectedLocation(newLocation);
+    if (onLocationChange) {
+      onLocationChange(newLocation);
+    }
+  };
+
   const filteredJobs = selectedCareerPath
     ? jobListings.filter((job) => job.careerPath === selectedCareerPath)
     : jobListings;
@@ -69,13 +99,35 @@ function JobListings({
                 )}
               </div>
 
-              <p className="text-xs md:text-sm text-gray-700">
+              <p className="text-xs md:text-sm text-gray-700 mb-3">
                 Current openings that match your profile
               </p>
 
+              {/* Location Dropdown */}
+              <div className="mb-3">
+                <div className="flex items-center mb-2">
+                  <MapPin size={14} className="text-gray-500 mr-1" />
+                  <label className="text-xs font-medium text-gray-700">
+                    Job Location
+                  </label>
+                </div>
+                <select
+                  value={selectedLocation}
+                  onChange={(e) => handleLocationChange(e.target.value)}
+                  className="w-full text-xs bg-white border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                >
+                  {locationOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               {selectedCareerPath && (
                 <p className="text-xs text-gray-600 mt-1 md:mt-2">
-                  Showing jobs for <strong>{selectedCareerPath}</strong>
+                  Showing jobs for <strong>{selectedCareerPath}</strong> in{" "}
+                  <strong>{selectedLocation}</strong>
                 </p>
               )}
             </motion.div>
@@ -128,7 +180,7 @@ function JobListings({
                           {/* Career Path Tag */}
                           {job.careerPath && (
                             <div className="mb-1 md:mb-2">
-                              <span className="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-0.5 rounded-full text-xs">
+                              <span className="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2 py-0.5 rounded-full">
                                 {job.careerPath}
                               </span>
                             </div>
@@ -156,7 +208,7 @@ function JobListings({
                                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                               />
                             </svg>
-                            {job.locations_derived?.[0] || "Remote"}
+                            {job.locations_derived?.[0] || selectedLocation}
                           </div>
 
                           {/* Date */}
@@ -213,8 +265,8 @@ function JobListings({
                     </h3>
                     <p className="text-xs md:text-sm text-gray-500">
                       {selectedCareerPath
-                        ? `We couldn't find any jobs matching "${selectedCareerPath}" at this time.`
-                        : "We couldn't find any jobs matching your profile at this time."}
+                        ? `We couldn't find any jobs matching "${selectedCareerPath}" in ${selectedLocation} at this time.`
+                        : `We couldn't find any jobs matching your profile in ${selectedLocation} at this time.`}
                     </p>
                     {selectedCareerPath && (
                       <button

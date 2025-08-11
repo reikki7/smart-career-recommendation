@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,7 +17,6 @@ function ManualInput({
   setSelectedCareerPath,
   setIsAnalyzing,
   setIsLoadingJobs,
-  chatMessages,
   setChatMessages,
   formData,
   setFormData,
@@ -25,6 +24,8 @@ function ManualInput({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isFormExpanded, setIsFormExpanded] = useState(true);
+  const [showQuickAnalyze, setShowQuickAnalyze] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 640);
 
   const handleAddField = (field, value) => {
     setFormData((prev) => ({
@@ -67,6 +68,7 @@ function ManualInput({
       languages: randomData.additional.languages,
       softSkills: randomData.additional.softSkills,
     });
+    setShowQuickAnalyze(true);
   };
 
   const handleSubmit = async (e) => {
@@ -170,6 +172,15 @@ function ManualInput({
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 640);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="max-w-2xl mx-auto w-full px-4 py-12 space-y-6">
       {/* Header */}
@@ -222,17 +233,47 @@ function ManualInput({
               className="bg-white shadow-xl rounded-lg p-8 border border-gray-100 overflow-hidden"
             >
               {/* Auto Fill Button */}
-              <div className="flex justify-end">
+              <div className="flex flex-col sm:flex-row justify-end gap-3 mb-6">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="button"
                   onClick={handleAutoFill}
-                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center space-x-2"
+                  className="w-full sm:w-auto border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <DatabaseIcon size={16} />
                   <span>Auto Fill Test Data</span>
                 </motion.button>
+
+                <AnimatePresence>
+                  {showQuickAnalyze && (
+                    <motion.button
+                      initial={{
+                        opacity: 0,
+                        scale: 0.9,
+                        x: isDesktop ? -10 : 0,
+                        y: isDesktop ? 0 : -10,
+                      }}
+                      animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0.9,
+                        x: isDesktop ? -10 : 0,
+                        y: isDesktop ? 0 : -10,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={loading}
+                      className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center justify-center space-x-2 disabled:bg-blue-400"
+                    >
+                      <ArrowRight size={16} />
+                      <span>{loading ? "Processing..." : "Quick Analyze"}</span>
+                    </motion.button>
+                  )}
+                </AnimatePresence>
               </div>
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name */}

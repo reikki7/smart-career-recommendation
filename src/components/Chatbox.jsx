@@ -12,8 +12,7 @@ const Chatbox = ({ parsedContent, messages, setMessages }) => {
   const messagesContainerRef = useRef(null);
   const latestUserMessageRef = useRef(null);
 
-  const backendEndpoint =
-    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+  const backendEndpoint = import.meta.env.VITE_BACKEND_API_URL;
 
   useEffect(() => {
     if (latestUserMessageRef.current && messagesContainerRef.current) {

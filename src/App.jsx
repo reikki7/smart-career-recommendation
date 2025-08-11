@@ -29,7 +29,6 @@ function App() {
   const [showLeftSidebar, setShowLeftSidebar] = useState(false);
   const [showRightSidebar, setShowRightSidebar] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isFormExpanded, setIsFormExpanded] = useState(true);
   const [chatMessages, setChatMessages] = useState([
     {
       role: "assistant",
@@ -45,11 +44,11 @@ function App() {
     languages: [""],
     softSkills: [""],
   });
+  const [selectedLocation, setSelectedLocation] = useState("Indonesia");
 
   const tabHeaderRef = useRef(null);
 
-  const backendEndpoint =
-    import.meta.env.VITE_BACKEND_API_URL || "http://localhost:5000";
+  const backendEndpoint = import.meta.env.VITE_BACKEND_API_URL;
 
   useEffect(() => {
     const checkMobile = () => {
@@ -82,7 +81,6 @@ function App() {
       return;
     }
 
-    localStorage.removeItem("jobListings");
     setJobListings([]);
     setSelectedCareerPath("");
 
@@ -209,10 +207,19 @@ function App() {
               "ngrok-skip-browser-warning": true,
               skip_zrok_interstitial: true,
             },
-            params: { title: sanitizedTitle },
+            params: {
+              title: sanitizedTitle,
+              location: selectedLocation,
+            },
           }
         );
-        console.log("Fetched job listings for", title, response.data);
+        console.log(
+          "Fetched job listings for",
+          title,
+          "in",
+          selectedLocation,
+          response.data
+        );
 
         const jobsWithCareerPath = response.data.map((job) => ({
           ...job,
@@ -227,28 +234,20 @@ function App() {
     }
 
     if (parsedContent?.jobRecommendation?.length && isLoadingJobs) {
-      const cachedListings = localStorage.getItem("jobListings");
-      if (cachedListings) {
-        setJobListings(JSON.parse(cachedListings));
+      // Remove caching - always fetch fresh data
+      const uniqueTitles = [
+        ...new Set(parsedContent.jobRecommendation.map((job) => job.jobTitle)),
+      ];
+
+      Promise.all(uniqueTitles.map(fetchJobListings)).then((results) => {
+        const flattened = results.flat();
+        setJobListings(flattened);
+        // Remove localStorage caching
         setIsLoadingJobs(false);
         setVennDiagramRendered(true);
-      } else {
-        const uniqueTitles = [
-          ...new Set(
-            parsedContent.jobRecommendation.map((job) => job.jobTitle)
-          ),
-        ];
-
-        Promise.all(uniqueTitles.map(fetchJobListings)).then((results) => {
-          const flattened = results.flat();
-          setJobListings(flattened);
-          localStorage.setItem("jobListings", JSON.stringify(flattened));
-          setIsLoadingJobs(false);
-          setVennDiagramRendered(true);
-        });
-      }
+      });
     }
-  }, [parsedContent, backendEndpoint, isLoadingJobs]);
+  }, [parsedContent, backendEndpoint, isLoadingJobs, selectedLocation]);
 
   const handleCareerPathClick = (careerPath) => {
     if (selectedCareerPath === careerPath) {
@@ -266,6 +265,18 @@ function App() {
   const toggleRightSidebar = () => {
     setShowRightSidebar(!showRightSidebar);
     if (!showRightSidebar) setShowLeftSidebar(false);
+  };
+
+  // Add a function to handle location changes
+  const handleLocationChange = (newLocation) => {
+    setSelectedLocation(newLocation);
+    // Clear existing job listings to force refresh
+    setJobListings([]);
+
+    // Trigger new job search if we have parsed content
+    if (parsedContent?.jobRecommendation?.length) {
+      setIsLoadingJobs(true);
+    }
   };
 
   return (
@@ -352,7 +363,7 @@ function App() {
               onCareerPathClick={handleCareerPathClick}
               selectedCareerPath={selectedCareerPath}
               isMobile={isMobile}
-              onClose={toggleLeftSidebar}
+              onClose={isMobile ? toggleLeftSidebar : null}
             />
           </motion.div>
         )}
@@ -459,7 +470,10 @@ function App() {
               selectedCareerPath={selectedCareerPath}
               setSelectedCareerPath={setSelectedCareerPath}
               isMobile={isMobile}
-              onClose={toggleRightSidebar}
+              onClose={isMobile ? toggleRightSidebar : null}
+              onLocationChange={handleLocationChange}
+              selectedLocation={selectedLocation}
+              setSelectedLocation={setSelectedLocation}
             />
           </motion.div>
         )}

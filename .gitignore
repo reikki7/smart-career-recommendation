@@ -85,6 +85,7 @@ cover/
 .env
 .venv
 env/
+venv_cuda/
 venv/
 ENV/
 env.bak/
@@ -184,3 +185,4 @@ Thumbs.db
 *.bak
 *.orig
 .sass-cache/
+other/
