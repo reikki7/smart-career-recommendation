@@ -137,12 +137,6 @@ Ensure your production environment has:
 - All dependencies from [requirements.txt](backend/requirements.txt)
 - Sufficient memory for ML models (recommended: 4GB+ RAM)
 
-### Deploying to GitHub Pages
-
-```bash
-pnpm run deploy
-```
-
 ### Development Scripts
 
 For Windows users, there's a convenient batch script to start all necessary services:
