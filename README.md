@@ -103,31 +103,6 @@ Jobify is an intelligent career recommendation platform that analyzes resume dat
 
 3. Open your browser and navigate to `http://localhost:5173`
 
-## Technology Stack
-
-### Backend
-
-- **Flask** - Web framework
-- **SentenceTransformers** - ML embeddings
-- **PyTorch** - Deep learning framework
-- **scikit-learn** - Machine learning utilities
-- **PyPDF2** - PDF text extraction
-- **BeautifulSoup4** - Web scraping
-- **Flask-CORS** - Cross-origin resource sharing
-
-### Frontend
-
-- **React.js** - UI framework
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-
-### Machine Learning
-
-- **BERT Models** - Semantic analysis
-- **Cosine Similarity** - Career matching
-- **CUDA Support** - GPU acceleration
-
 ## Usage
 
 1. Choose between uploading a resume PDF or manually entering your information
