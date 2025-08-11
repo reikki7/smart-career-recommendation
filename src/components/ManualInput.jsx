@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Chatbox from "./Chatbox";
 import webIcon from "/webIcon.png";
 import { Trash2Icon } from "lucide-react";
 import { getRandomUserData } from "./dummyData";
 import { ChevronDownIcon } from "lucide-react";
 import { DatabaseIcon } from "lucide-react";
+import ConfidenceVennDiagram from "./ConfidenceVennDiagram";
 
 function ManualInput({
   backendEndpoint,
@@ -17,7 +17,6 @@ function ManualInput({
   setSelectedCareerPath,
   setIsAnalyzing,
   setIsLoadingJobs,
-  chatMessages,
   setChatMessages,
   formData,
   setFormData,
@@ -25,6 +24,8 @@ function ManualInput({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isFormExpanded, setIsFormExpanded] = useState(true);
+  const [showQuickAnalyze, setShowQuickAnalyze] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 640);
 
   const handleAddField = (field, value) => {
     setFormData((prev) => ({
@@ -67,6 +68,7 @@ function ManualInput({
       languages: randomData.additional.languages,
       softSkills: randomData.additional.softSkills,
     });
+    setShowQuickAnalyze(true);
   };
 
   const handleSubmit = async (e) => {
@@ -144,8 +146,15 @@ function ManualInput({
           },
         }
       );
+
+      // Add detailed logging
+      console.log("=== RAW AI RESPONSE ===");
+      console.log("Full response:", response);
+      console.log("Response data:", response.data);
+      console.log("Job recommendations:", response.data.jobRecommendation);
+      console.log("=== END RAW AI RESPONSE ===");
+
       setParsedContent(response.data);
-      // Collapse the form upon successful analysis
       setIsFormExpanded(false);
 
       window.scrollTo({
@@ -162,6 +171,15 @@ function ManualInput({
       setIsAnalyzing(false);
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 640);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="max-w-2xl mx-auto w-full px-4 py-12 space-y-6">
@@ -180,19 +198,14 @@ function ManualInput({
           matches and professional insights.
         </p>
       </motion.div>
-
-      {/* Chatbox Section */}
-      {parsedContent && !loading && (
+      {/* Confidence Diagram Section */}
+      {parsedContent && !loading && parsedContent.jobRecommendation && (
         <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mt-4">
-          <Chatbox
-            parsedContent={parsedContent}
-            messages={chatMessages}
-            setMessages={setChatMessages}
+          <ConfidenceVennDiagram
+            jobRecommendation={parsedContent.jobRecommendation}
           />
         </div>
       )}
-
-      {/* Toggle Form Expand/Collapse */}
       {parsedContent && (
         <button
           onClick={() => setIsFormExpanded((prev) => !prev)}
@@ -207,7 +220,6 @@ function ManualInput({
           <span className="text-left flex-grow">Modify Input Details</span>
         </button>
       )}
-
       {/* Form */}
       {isFormExpanded && (
         <>
@@ -221,17 +233,47 @@ function ManualInput({
               className="bg-white shadow-xl rounded-lg p-8 border border-gray-100 overflow-hidden"
             >
               {/* Auto Fill Button */}
-              <div className="flex justify-end">
+              <div className="flex flex-col sm:flex-row justify-end gap-3 mb-6">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="button"
                   onClick={handleAutoFill}
-                  className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center space-x-2"
+                  className="w-full sm:w-auto border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
                 >
                   <DatabaseIcon size={16} />
                   <span>Auto Fill Test Data</span>
                 </motion.button>
+
+                <AnimatePresence>
+                  {showQuickAnalyze && (
+                    <motion.button
+                      initial={{
+                        opacity: 0,
+                        scale: 0.9,
+                        x: isDesktop ? -10 : 0,
+                        y: isDesktop ? 0 : -10,
+                      }}
+                      animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0.9,
+                        x: isDesktop ? -10 : 0,
+                        y: isDesktop ? 0 : -10,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      type="button"
+                      onClick={handleSubmit}
+                      disabled={loading}
+                      className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center justify-center space-x-2 disabled:bg-blue-400"
+                    >
+                      <ArrowRight size={16} />
+                      <span>{loading ? "Processing..." : "Quick Analyze"}</span>
+                    </motion.button>
+                  )}
+                </AnimatePresence>
               </div>
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Name */}
@@ -584,7 +626,6 @@ function ManualInput({
           </AnimatePresence>
         </>
       )}
-
       {/* Analyze Button if Form is collapsed */}
       {!isFormExpanded && parsedContent && (
         <button
@@ -597,7 +638,6 @@ function ManualInput({
           <ArrowRight className="ml-2" size={18} />
         </button>
       )}
-
       {/* Loading Spinner */}
       <AnimatePresence mode="wait">
         {loading && (
