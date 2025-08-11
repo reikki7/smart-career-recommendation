@@ -44,7 +44,7 @@ Jobify is an intelligent career recommendation platform that analyzes resume dat
 
 - **Frontend**: Node.js (v14+), npm or pnpm
 - **Backend**: Python 3.8+, pip
-- **LM Studio**: PDF content extraction
+- **LM Studio**: (also) PDF content extraction
 - **Optional**: CUDA-capable GPU for faster ML processing
 
 ### Installation
