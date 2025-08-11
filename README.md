@@ -13,7 +13,7 @@ Jobify is an intelligent career recommendation platform that analyzes resume dat
   - Resume upload (PDF analysis with PyPDF2)
   - Manual input form for detailed profile creation
 
-- **AI-Powered Analysis**:
+- **Sentence Similarity-based Analysis**:
 
   - BERT-based semantic embeddings using SentenceTransformers
   - Multiple transformer models: `all-mpnet-base-v2`, `all-MiniLM-L6-v2`, `Fatin757/modernbert-job-role-matcher`
